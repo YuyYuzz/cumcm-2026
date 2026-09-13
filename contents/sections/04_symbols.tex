@@ -1,0 +1,58 @@
+\section{符号说明}
+
+% 符号定义维护于 docs/notations.md；增补或改名时同步更新两处。
+% 使用 longtable 保留续表表头，后续新增条目无需压缩字号或行距。
+本文主要符号及单位见表\ref{tab:notations}。
+下标 $a$、$s$、$0$ 分别表示烘房空气、药材表面和初始状态，
+正文中的 $T$、$T_a$ 和 $T_s$ 统一采用摄氏温度，单位为 ${}^\circ\mathrm{C}$。凡进入 Arrhenius 经验公式，单独定义 $T_K=T+273.15$，并以 $T_K$ 代入指数项；后续各问均遵循此约定。
+
+\begingroup
+% 与项目 tabular 表格沿用相同字号、行距，不修改公共模板。
+\zihao{-5}
+\renewcommand{\arraystretch}{1.38}
+\begin{longtable}{@{}p{0.13\textwidth}p{0.60\textwidth}p{0.20\textwidth}@{}}
+\caption{核心符号及单位}\label{tab:notations}\\
+\toprule
+符号 & 含义 & 单位 \\
+\midrule
+\endfirsthead
+\multicolumn{3}{c}{\textbf{表\thetable\quad 核心符号及单位（续）}}\\
+\toprule
+符号 & 含义 & 单位 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{续下页}\\
+\endfoot
+\bottomrule
+\endlastfoot
+$t$ & 烘干时间 & $\mathrm{s}$ \\
+$t_e$ & 全域最大水分浓度首次降至阈值的临界时刻 & $\mathrm{s}$ \\
+$\xi$ & 材料坐标，$\xi=r/R(t)$ & $1$ \\
+$C_{\max}$ & 全域最大水分浓度 & $\mathrm{kg/kg}$ \\
+$r$ & 到圆柱中心轴的径向距离 & $\mathrm{m}$ \\
+$R$ & 药材半径；尺寸变化时记为 $R(t)$ & $\mathrm{m}$ \\
+$L$ & 药材长度 & $\mathrm{m}$ \\
+$T$ & 药材温度，正文采用摄氏温度 & ${}^\circ\mathrm{C}$ \\
+$C$ & 药材水分浓度，即干基含水率 & $\mathrm{kg/kg}$ \\
+$\rho$ & 药材密度 & $\mathrm{kg/m^3}$ \\
+$c_p$ & 药材比热容 & $\mathrm{J/(kg\cdot K)}$ \\
+$k$ & 热传导系数 & $\mathrm{W/(m\cdot K)}$ \\
+$D$ & 水分扩散系数 & $\mathrm{m^2/s}$ \\
+$h$ & 对流换热系数 & $\mathrm{W/(m^2\cdot K)}$ \\
+$h_m$ & 对流传质系数 & $\mathrm{m/s}$ \\
+$T_a$ & 烘房空气温度，正文采用摄氏温度 & ${}^\circ\mathrm{C}$ \\
+$C_a$ & 烘房空气水分浓度，采用附件口径 & $\mathrm{kg/kg}$ \\
+$T_s$ & 药材表面温度，正文采用摄氏温度 & ${}^\circ\mathrm{C}$ \\
+$C_s$ & 药材表面水分浓度，即表面干基含水率 & $\mathrm{kg/kg}$ \\
+$\alpha$ & 热扩散率，$\alpha=k/(\rho c_p)$ & $\mathrm{m^2/s}$ \\
+$\tau_T$ & 径向热扩散特征时间 & $\mathrm{s}$ \\
+$\tau_C$ & 径向水分扩散特征时间 & $\mathrm{s}$ \\
+$N$ & 径向控制体总数 & $1$ \\
+$\Delta r$ & 均匀径向网格宽度 & $\mathrm{m}$ \\
+$i$ & 控制体或节点编号 & $1$ \\
+\end{longtable}
+\endgroup
+
+表中单位“$1$”表示无量纲。
+物性参数及数值离散符号均在相应问题中定义。

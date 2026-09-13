@@ -1,0 +1,1402 @@
+{
+  "formal": {
+    "cells": 2561,
+    "rtol": 1e-08,
+    "max_step_s": 60.0,
+    "radius_interpolation": "pchip",
+    "end_time_s": 182956.14779259945,
+    "end_time_h": 50.82115216461096,
+    "end_surface_C": 0.052496401177438465,
+    "end_axis_C": 0.15,
+    "end_max_C": 0.15,
+    "end_argmax_cm": 0.0,
+    "end_radius_cm": 1.2,
+    "records": [
+      {
+        "time_h": 6.0,
+        "fixed_C": [
+          1.7164244107873865,
+          1.5349695654126565,
+          1.0212472350650863,
+          null
+        ],
+        "surface_C": 0.42151946808448676,
+        "axis_C": 1.7164244107873865,
+        "radius_cm": 1.374
+      },
+      {
+        "time_h": 12.0,
+        "fixed_C": [
+          0.7340340478550638,
+          0.6515591240203542,
+          0.4067803603419788,
+          null
+        ],
+        "surface_C": 0.16659880044549488,
+        "axis_C": 0.7340340478550638,
+        "radius_cm": 1.248
+      },
+      {
+        "time_h": 18.0,
+        "fixed_C": [
+          0.40653053994713123,
+          0.36674502161401085,
+          0.23873853108961152,
+          null
+        ],
+        "surface_C": 0.08884309408704873,
+        "axis_C": 0.40653053994713123,
+        "radius_cm": 1.214
+      },
+      {
+        "time_h": 24.0,
+        "fixed_C": [
+          0.28369592850733844,
+          0.2598200714697935,
+          0.17830326642210179,
+          null
+        ],
+        "surface_C": 0.0670897831631084,
+        "axis_C": 0.28369592850733844,
+        "radius_cm": 1.204
+      },
+      {
+        "time_h": 30.0,
+        "fixed_C": [
+          0.2253138203927997,
+          0.2084926548588831,
+          0.14874797258904524,
+          null
+        ],
+        "surface_C": 0.05929212763318312,
+        "axis_C": 0.2253138203927997,
+        "radius_cm": 1.201
+      },
+      {
+        "time_h": 36.0,
+        "fixed_C": [
+          0.1920385224722425,
+          0.17896222513831575,
+          0.13124216960069737,
+          null
+        ],
+        "surface_C": 0.05578875510104519,
+        "axis_C": 0.1920385224722425,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 42.0,
+        "fixed_C": [
+          0.17060267362401849,
+          0.15980401892723384,
+          0.1196246413997105,
+          null
+        ],
+        "surface_C": 0.05394269936991891,
+        "axis_C": 0.17060267362401849,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 48.0,
+        "fixed_C": [
+          0.15561038045147424,
+          0.14632351461656673,
+          0.11125539177374356,
+          null
+        ],
+        "surface_C": 0.05285759728875249,
+        "axis_C": 0.15561038045147424,
+        "radius_cm": 1.2
+      }
+    ],
+    "root_audit": {
+      "scan_points": 4097,
+      "records": [
+        {
+          "time_s": 3600.0,
+          "time_h": 1.0,
+          "root_count": 1,
+          "roots": [
+            0.9832736749293187
+          ],
+          "adopted_root": 0.9832736749293237,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 14400.0,
+          "time_h": 4.0,
+          "root_count": 1,
+          "roots": [
+            0.5763621445632067
+          ],
+          "adopted_root": 0.5763621445632067,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 21600.0,
+          "time_h": 6.0,
+          "root_count": 1,
+          "roots": [
+            0.4215194680845211
+          ],
+          "adopted_root": 0.42151946808448676,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 43200.0,
+          "time_h": 12.0,
+          "root_count": 1,
+          "roots": [
+            0.16659880044549502
+          ],
+          "adopted_root": 0.16659880044549488,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 86400.0,
+          "time_h": 24.0,
+          "root_count": 1,
+          "roots": [
+            0.06708978316310842
+          ],
+          "adopted_root": 0.0670897831631084,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 129600.0,
+          "time_h": 36.0,
+          "root_count": 1,
+          "roots": [
+            0.05578875510104519
+          ],
+          "adopted_root": 0.05578875510104519,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 172800.0,
+          "time_h": 48.0,
+          "root_count": 1,
+          "roots": [
+            0.05285759728875249
+          ],
+          "adopted_root": 0.05285759728875249,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 182956.14779259945,
+          "time_h": 50.82115216461096,
+          "root_count": 1,
+          "roots": [
+            0.052496401177438035
+          ],
+          "adopted_root": 0.052496401177438465,
+          "adopted_is_first_from_cell": true
+        }
+      ],
+      "all_single_root": true,
+      "adopted_continuous_nonincreasing": true
+    },
+    "runtime_s": 136.79176030000235,
+    "nfev": 20772
+  },
+  "grid_N641": {
+    "cells": 641,
+    "rtol": 1e-08,
+    "max_step_s": 60.0,
+    "radius_interpolation": "pchip",
+    "end_time_s": 182975.96747274295,
+    "end_time_h": 50.82665763131749,
+    "end_surface_C": 0.052496652128921975,
+    "end_axis_C": 0.15,
+    "end_max_C": 0.15,
+    "end_argmax_cm": 0.0,
+    "end_radius_cm": 1.2,
+    "records": [
+      {
+        "time_h": 6.0,
+        "fixed_C": [
+          1.716426136633724,
+          1.5349714578209095,
+          1.0212492990044215,
+          null
+        ],
+        "surface_C": 0.42151950522320064,
+        "axis_C": 1.716426136633724,
+        "radius_cm": 1.374
+      },
+      {
+        "time_h": 12.0,
+        "fixed_C": [
+          0.7340364398928846,
+          0.6515617037760613,
+          0.40678424296054794,
+          null
+        ],
+        "surface_C": 0.16659728015035466,
+        "axis_C": 0.7340364398928846,
+        "radius_cm": 1.248
+      },
+      {
+        "time_h": 18.0,
+        "fixed_C": [
+          0.40653469452056445,
+          0.3667502128672021,
+          0.23875098930778021,
+          null
+        ],
+        "surface_C": 0.08883880848056103,
+        "axis_C": 0.40653469452056445,
+        "radius_cm": 1.214
+      },
+      {
+        "time_h": 24.0,
+        "fixed_C": [
+          0.2837033915501493,
+          0.25982935094585763,
+          0.1783248629518775,
+          null
+        ],
+        "surface_C": 0.06708757741801562,
+        "axis_C": 0.2837033915501493,
+        "radius_cm": 1.204
+      },
+      {
+        "time_h": 30.0,
+        "fixed_C": [
+          0.2253237926002121,
+          0.2085044631012532,
+          0.14877192547360737,
+          null
+        ],
+        "surface_C": 0.05929221369985312,
+        "axis_C": 0.2253237926002121,
+        "radius_cm": 1.201
+      },
+      {
+        "time_h": 36.0,
+        "fixed_C": [
+          0.19204951363102124,
+          0.17897471797742762,
+          0.1312645791423274,
+          null
+        ],
+        "surface_C": 0.055789680768794515,
+        "axis_C": 0.19204951363102124,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 42.0,
+        "fixed_C": [
+          0.1706136878981602,
+          0.1598161686262771,
+          0.11964439117298901,
+          null
+        ],
+        "surface_C": 0.05394375434151839,
+        "axis_C": 0.1706136878981602,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 48.0,
+        "fixed_C": [
+          0.1556209224591606,
+          0.14633489185355358,
+          0.11127250466410589,
+          null
+        ],
+        "surface_C": 0.052858553572434346,
+        "axis_C": 0.1556209224591606,
+        "radius_cm": 1.2
+      }
+    ],
+    "root_audit": {
+      "scan_points": 4097,
+      "records": [
+        {
+          "time_s": 3600.0,
+          "time_h": 1.0,
+          "root_count": 1,
+          "roots": [
+            0.9832785974837924
+          ],
+          "adopted_root": 0.9832785974838173,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 14400.0,
+          "time_h": 4.0,
+          "root_count": 1,
+          "roots": [
+            0.5763626348960057
+          ],
+          "adopted_root": 0.5763626348959742,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 21600.0,
+          "time_h": 6.0,
+          "root_count": 1,
+          "roots": [
+            0.421519505223197
+          ],
+          "adopted_root": 0.42151950522320064,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 43200.0,
+          "time_h": 12.0,
+          "root_count": 1,
+          "roots": [
+            0.16659728015035466
+          ],
+          "adopted_root": 0.16659728015035466,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 86400.0,
+          "time_h": 24.0,
+          "root_count": 1,
+          "roots": [
+            0.06708757741800433
+          ],
+          "adopted_root": 0.06708757741801562,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 129600.0,
+          "time_h": 36.0,
+          "root_count": 1,
+          "roots": [
+            0.0557896807688204
+          ],
+          "adopted_root": 0.055789680768794515,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 172800.0,
+          "time_h": 48.0,
+          "root_count": 1,
+          "roots": [
+            0.05285855357241412
+          ],
+          "adopted_root": 0.052858553572434346,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 182975.96747274295,
+          "time_h": 50.82665763131749,
+          "root_count": 1,
+          "roots": [
+            0.05249665212892174
+          ],
+          "adopted_root": 0.052496652128921975,
+          "adopted_is_first_from_cell": true
+        }
+      ],
+      "all_single_root": true,
+      "adopted_continuous_nonincreasing": true
+    },
+    "runtime_s": 57.71467649999977,
+    "nfev": 20765
+  },
+  "grid_N1281": {
+    "cells": 1281,
+    "rtol": 1e-08,
+    "max_step_s": 60.0,
+    "radius_interpolation": "pchip",
+    "end_time_s": 182960.52536901616,
+    "end_time_h": 50.822368158060044,
+    "end_surface_C": 0.052496463370438735,
+    "end_axis_C": 0.15,
+    "end_max_C": 0.15,
+    "end_argmax_cm": 0.0,
+    "end_radius_cm": 1.2,
+    "records": [
+      {
+        "time_h": 6.0,
+        "fixed_C": [
+          1.7164247673747257,
+          1.5349699534295282,
+          1.0212476528958978,
+          null
+        ],
+        "surface_C": 0.4215194734505409,
+        "axis_C": 1.7164247673747257,
+        "radius_cm": 1.374
+      },
+      {
+        "time_h": 12.0,
+        "fixed_C": [
+          0.7340345315960022,
+          0.6515596457782706,
+          0.4067811477401156,
+          null
+        ],
+        "surface_C": 0.16659848734145596,
+        "axis_C": 0.7340345315960022,
+        "radius_cm": 1.248
+      },
+      {
+        "time_h": 18.0,
+        "fixed_C": [
+          0.4065313889818762,
+          0.36674608809617265,
+          0.2387411345869104,
+          null
+        ],
+        "surface_C": 0.08884214783749352,
+        "axis_C": 0.4065313889818762,
+        "radius_cm": 1.214
+      },
+      {
+        "time_h": 24.0,
+        "fixed_C": [
+          0.2836974982297935,
+          0.2598220399317941,
+          0.17830796079828945,
+          null
+        ],
+        "surface_C": 0.0670892495012315,
+        "axis_C": 0.2836974982297935,
+        "radius_cm": 1.204
+      },
+      {
+        "time_h": 30.0,
+        "fixed_C": [
+          0.22531597015777902,
+          0.2084952188152761,
+          0.14875327768497765,
+          null
+        ],
+        "surface_C": 0.059292131463921156,
+        "axis_C": 0.22531597015777902,
+        "radius_cm": 1.201
+      },
+      {
+        "time_h": 36.0,
+        "fixed_C": [
+          0.19204092574252557,
+          0.1789649696200343,
+          0.13124715212884694,
+          null
+        ],
+        "surface_C": 0.05578896481327964,
+        "axis_C": 0.19204092574252557,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 42.0,
+        "fixed_C": [
+          0.17060509866892246,
+          0.159806700642868,
+          0.11962902181576597,
+          null
+        ],
+        "surface_C": 0.05394294182034449,
+        "axis_C": 0.17060509866892246,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 48.0,
+        "fixed_C": [
+          0.1556127079496478,
+          0.14632602863494582,
+          0.11125917003185243,
+          null
+        ],
+        "surface_C": 0.05285781643437976,
+        "axis_C": 0.1556127079496478,
+        "radius_cm": 1.2
+      }
+    ],
+    "root_audit": {
+      "scan_points": 4097,
+      "records": [
+        {
+          "time_s": 3600.0,
+          "time_h": 1.0,
+          "root_count": 1,
+          "roots": [
+            0.9832746938849115
+          ],
+          "adopted_root": 0.983274693884925,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 14400.0,
+          "time_h": 4.0,
+          "root_count": 1,
+          "roots": [
+            0.5763622198650605
+          ],
+          "adopted_root": 0.576362219865083,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 21600.0,
+          "time_h": 6.0,
+          "root_count": 1,
+          "roots": [
+            0.4215194734505409
+          ],
+          "adopted_root": 0.4215194734505409,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 43200.0,
+          "time_h": 12.0,
+          "root_count": 1,
+          "roots": [
+            0.166598487341456
+          ],
+          "adopted_root": 0.16659848734145596,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 86400.0,
+          "time_h": 24.0,
+          "root_count": 1,
+          "roots": [
+            0.06708924950121735
+          ],
+          "adopted_root": 0.0670892495012315,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 129600.0,
+          "time_h": 36.0,
+          "root_count": 1,
+          "roots": [
+            0.05578896481327697
+          ],
+          "adopted_root": 0.05578896481327964,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 172800.0,
+          "time_h": 48.0,
+          "root_count": 1,
+          "roots": [
+            0.05285781643437976
+          ],
+          "adopted_root": 0.05285781643437976,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 182960.52536901616,
+          "time_h": 50.822368158060044,
+          "root_count": 1,
+          "roots": [
+            0.05249646337043859
+          ],
+          "adopted_root": 0.052496463370438735,
+          "adopted_is_first_from_cell": true
+        }
+      ],
+      "all_single_root": true,
+      "adopted_continuous_nonincreasing": true
+    },
+    "runtime_s": 71.85032789999968,
+    "nfev": 20735
+  },
+  "grid_N5121": {
+    "cells": 5121,
+    "rtol": 1e-08,
+    "max_step_s": 60.0,
+    "radius_interpolation": "pchip",
+    "end_time_s": 182954.9696549418,
+    "end_time_h": 50.8208249041505,
+    "end_surface_C": 0.052496382965431035,
+    "end_axis_C": 0.15,
+    "end_max_C": 0.15,
+    "end_argmax_cm": 0.0,
+    "end_radius_cm": 1.2,
+    "records": [
+      {
+        "time_h": 6.0,
+        "fixed_C": [
+          1.7164243188288644,
+          1.5349694657549868,
+          1.0212471287867972,
+          null
+        ],
+        "surface_C": 0.42151946376119254,
+        "axis_C": 1.7164243188288644,
+        "radius_cm": 1.374
+      },
+      {
+        "time_h": 12.0,
+        "fixed_C": [
+          0.7340339267099325,
+          0.6515589931747912,
+          0.4067801620254324,
+          null
+        ],
+        "surface_C": 0.16659887993618927,
+        "axis_C": 0.7340339267099325,
+        "radius_cm": 1.248
+      },
+      {
+        "time_h": 18.0,
+        "fixed_C": [
+          0.406530324714667,
+          0.366744750279294,
+          0.23873786080316833,
+          null
+        ],
+        "surface_C": 0.08884334769087053,
+        "axis_C": 0.406530324714667,
+        "radius_cm": 1.214
+      },
+      {
+        "time_h": 24.0,
+        "fixed_C": [
+          0.2836955224595251,
+          0.25981955887435576,
+          0.17830202034362325,
+          null
+        ],
+        "surface_C": 0.06708993805693238,
+        "axis_C": 0.2836955224595251,
+        "radius_cm": 1.204
+      },
+      {
+        "time_h": 30.0,
+        "fixed_C": [
+          0.22531325390396476,
+          0.20849197498316024,
+          0.1487465418284833,
+          null
+        ],
+        "surface_C": 0.059292130301534594,
+        "axis_C": 0.22531325390396476,
+        "radius_cm": 1.201
+      },
+      {
+        "time_h": 36.0,
+        "fixed_C": [
+          0.19203788131130156,
+          0.17896148995639563,
+          0.13124082120164032,
+          null
+        ],
+        "surface_C": 0.05578869735282762,
+        "axis_C": 0.19203788131130156,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 42.0,
+        "fixed_C": [
+          0.17060202274194072,
+          0.1598032976198435,
+          0.11962345856059257,
+          null
+        ],
+        "surface_C": 0.05394263189222589,
+        "axis_C": 0.17060202274194072,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 48.0,
+        "fixed_C": [
+          0.15560975426932033,
+          0.14632283779257393,
+          0.11125437558373283,
+          null
+        ],
+        "surface_C": 0.05285753653593553,
+        "axis_C": 0.15560975426932033,
+        "radius_cm": 1.2
+      }
+    ],
+    "root_audit": {
+      "scan_points": 4097,
+      "records": [
+        {
+          "time_s": 3600.0,
+          "time_h": 1.0,
+          "root_count": 1,
+          "roots": [
+            0.9832734804507683
+          ],
+          "adopted_root": 0.9832734804507683,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 14400.0,
+          "time_h": 4.0,
+          "root_count": 1,
+          "roots": [
+            0.5763621182572907
+          ],
+          "adopted_root": 0.5763621182572907,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 21600.0,
+          "time_h": 6.0,
+          "root_count": 1,
+          "roots": [
+            0.42151946376118077
+          ],
+          "adopted_root": 0.42151946376119254,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 43200.0,
+          "time_h": 12.0,
+          "root_count": 1,
+          "roots": [
+            0.16659887993618924
+          ],
+          "adopted_root": 0.16659887993618927,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 86400.0,
+          "time_h": 24.0,
+          "root_count": 1,
+          "roots": [
+            0.06708993805693239
+          ],
+          "adopted_root": 0.06708993805693238,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 129600.0,
+          "time_h": 36.0,
+          "root_count": 1,
+          "roots": [
+            0.0557886973528276
+          ],
+          "adopted_root": 0.05578869735282762,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 172800.0,
+          "time_h": 48.0,
+          "root_count": 1,
+          "roots": [
+            0.05285753653593553
+          ],
+          "adopted_root": 0.05285753653593553,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 182954.9696549418,
+          "time_h": 50.8208249041505,
+          "root_count": 1,
+          "roots": [
+            0.0524963829654259
+          ],
+          "adopted_root": 0.052496382965431035,
+          "adopted_is_first_from_cell": true
+        }
+      ],
+      "all_single_root": true,
+      "adopted_continuous_nonincreasing": true
+    },
+    "runtime_s": 97.83807220000017,
+    "nfev": 20871
+  },
+  "rtol_1e-7": {
+    "cells": 2561,
+    "rtol": 1e-07,
+    "max_step_s": 60.0,
+    "radius_interpolation": "pchip",
+    "end_time_s": 182956.13760571193,
+    "end_time_h": 50.82114933491998,
+    "end_surface_C": 0.052496401192537234,
+    "end_axis_C": 0.15,
+    "end_max_C": 0.15,
+    "end_argmax_cm": 0.0,
+    "end_radius_cm": 1.2,
+    "records": [
+      {
+        "time_h": 6.0,
+        "fixed_C": [
+          1.7164243200422187,
+          1.5349694953265847,
+          1.021247207868004,
+          null
+        ],
+        "surface_C": 0.4215194586054997,
+        "axis_C": 1.7164243200422187,
+        "radius_cm": 1.374
+      },
+      {
+        "time_h": 12.0,
+        "fixed_C": [
+          0.7340340265075717,
+          0.6515591056722152,
+          0.40678035013383046,
+          null
+        ],
+        "surface_C": 0.16659879466508934,
+        "axis_C": 0.7340340265075717,
+        "radius_cm": 1.248
+      },
+      {
+        "time_h": 18.0,
+        "fixed_C": [
+          0.406530533072542,
+          0.3667450156926799,
+          0.23873852790979835,
+          null
+        ],
+        "surface_C": 0.08884309287868164,
+        "axis_C": 0.406530533072542,
+        "radius_cm": 1.214
+      },
+      {
+        "time_h": 24.0,
+        "fixed_C": [
+          0.2836959209601093,
+          0.25982006491788723,
+          0.17830326285766854,
+          null
+        ],
+        "surface_C": 0.06708978277259331,
+        "axis_C": 0.2836959209601093,
+        "radius_cm": 1.204
+      },
+      {
+        "time_h": 30.0,
+        "fixed_C": [
+          0.22531381601007333,
+          0.20849265099365297,
+          0.14874797036374965,
+          null
+        ],
+        "surface_C": 0.05929212712910433,
+        "axis_C": 0.22531381601007333,
+        "radius_cm": 1.201
+      },
+      {
+        "time_h": 36.0,
+        "fixed_C": [
+          0.19203851858111254,
+          0.1789622216852023,
+          0.13124216756368237,
+          null
+        ],
+        "surface_C": 0.055788754732161584,
+        "axis_C": 0.19203851858111254,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 42.0,
+        "fixed_C": [
+          0.17060266887788836,
+          0.15980401471445993,
+          0.11962463889267892,
+          null
+        ],
+        "surface_C": 0.05394269902008868,
+        "axis_C": 0.17060266887788836,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 48.0,
+        "fixed_C": [
+          0.15561037523926752,
+          0.1463235099635967,
+          0.11125538894036677,
+          null
+        ],
+        "surface_C": 0.05285759695837606,
+        "axis_C": 0.15561037523926752,
+        "radius_cm": 1.2
+      }
+    ],
+    "root_audit": {
+      "scan_points": 4097,
+      "records": [
+        {
+          "time_s": 3600.0,
+          "time_h": 1.0,
+          "root_count": 1,
+          "roots": [
+            0.9832736872713911
+          ],
+          "adopted_root": 0.9832736872713961,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 14400.0,
+          "time_h": 4.0,
+          "root_count": 1,
+          "roots": [
+            0.5763623162524276
+          ],
+          "adopted_root": 0.5763623162524276,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 21600.0,
+          "time_h": 6.0,
+          "root_count": 1,
+          "roots": [
+            0.4215194586055341
+          ],
+          "adopted_root": 0.4215194586054997,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 43200.0,
+          "time_h": 12.0,
+          "root_count": 1,
+          "roots": [
+            0.16659879466508948
+          ],
+          "adopted_root": 0.16659879466508934,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 86400.0,
+          "time_h": 24.0,
+          "root_count": 1,
+          "roots": [
+            0.06708978277259331
+          ],
+          "adopted_root": 0.06708978277259331,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 129600.0,
+          "time_h": 36.0,
+          "root_count": 1,
+          "roots": [
+            0.055788754732161584
+          ],
+          "adopted_root": 0.055788754732161584,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 172800.0,
+          "time_h": 48.0,
+          "root_count": 1,
+          "roots": [
+            0.05285759695837605
+          ],
+          "adopted_root": 0.05285759695837606,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 182956.13760571193,
+          "time_h": 50.82114933491998,
+          "root_count": 1,
+          "roots": [
+            0.052496401192536804
+          ],
+          "adopted_root": 0.052496401192537234,
+          "adopted_is_first_from_cell": true
+        }
+      ],
+      "all_single_root": true,
+      "adopted_continuous_nonincreasing": true
+    },
+    "runtime_s": 39.980863099997805,
+    "nfev": 14489
+  },
+  "max_step_30s": {
+    "cells": 2561,
+    "rtol": 1e-08,
+    "max_step_s": 30.0,
+    "radius_interpolation": "pchip",
+    "end_time_s": 182956.14755227897,
+    "end_time_h": 50.82115209785527,
+    "end_surface_C": 0.052496401177448554,
+    "end_axis_C": 0.15,
+    "end_max_C": 0.15,
+    "end_argmax_cm": 0.0,
+    "end_radius_cm": 1.2,
+    "records": [
+      {
+        "time_h": 6.0,
+        "fixed_C": [
+          1.716424409473804,
+          1.534969563976839,
+          1.02124723406184,
+          null
+        ],
+        "surface_C": 0.42151946797178125,
+        "axis_C": 1.716424409473804,
+        "radius_cm": 1.374
+      },
+      {
+        "time_h": 12.0,
+        "fixed_C": [
+          0.7340340465852699,
+          0.651559122925679,
+          0.4067803597617342,
+          null
+        ],
+        "surface_C": 0.16659880059303878,
+        "axis_C": 0.7340340465852699,
+        "radius_cm": 1.248
+      },
+      {
+        "time_h": 18.0,
+        "fixed_C": [
+          0.4065305391635142,
+          0.3667450209399691,
+          0.23873853073109297,
+          null
+        ],
+        "surface_C": 0.08884309370551612,
+        "axis_C": 0.4065305391635142,
+        "radius_cm": 1.214
+      },
+      {
+        "time_h": 24.0,
+        "fixed_C": [
+          0.2836959277182258,
+          0.2598200707841391,
+          0.17830326604790078,
+          null
+        ],
+        "surface_C": 0.06708978261683449,
+        "axis_C": 0.2836959277182258,
+        "radius_cm": 1.204
+      },
+      {
+        "time_h": 30.0,
+        "fixed_C": [
+          0.22531382013149212,
+          0.20849265462025476,
+          0.14874797243740137,
+          null
+        ],
+        "surface_C": 0.05929212759286852,
+        "axis_C": 0.22531382013149212,
+        "radius_cm": 1.201
+      },
+      {
+        "time_h": 36.0,
+        "fixed_C": [
+          0.19203852218435102,
+          0.17896222488131663,
+          0.13124216944703268,
+          null
+        ],
+        "surface_C": 0.05578875507435496,
+        "axis_C": 0.19203852218435102,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 42.0,
+        "fixed_C": [
+          0.17060267342962085,
+          0.15980401875284392,
+          0.11962464129248618,
+          null
+        ],
+        "surface_C": 0.05394269935472075,
+        "axis_C": 0.17060267342962085,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 48.0,
+        "fixed_C": [
+          0.1556103803102187,
+          0.14632351448922679,
+          0.11125539169389391,
+          null
+        ],
+        "surface_C": 0.05285759727935358,
+        "axis_C": 0.1556103803102187,
+        "radius_cm": 1.2
+      }
+    ],
+    "root_audit": {
+      "scan_points": 4097,
+      "records": [
+        {
+          "time_s": 3600.0,
+          "time_h": 1.0,
+          "root_count": 1,
+          "roots": [
+            0.9832736749293187
+          ],
+          "adopted_root": 0.9832736749293237,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 14400.0,
+          "time_h": 4.0,
+          "root_count": 1,
+          "roots": [
+            0.5763621445632067
+          ],
+          "adopted_root": 0.5763621445632067,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 21600.0,
+          "time_h": 6.0,
+          "root_count": 1,
+          "roots": [
+            0.42151946797181555
+          ],
+          "adopted_root": 0.42151946797178125,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 43200.0,
+          "time_h": 12.0,
+          "root_count": 1,
+          "roots": [
+            0.16659880059303891
+          ],
+          "adopted_root": 0.16659880059303878,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 86400.0,
+          "time_h": 24.0,
+          "root_count": 1,
+          "roots": [
+            0.06708978261683449
+          ],
+          "adopted_root": 0.06708978261683449,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 129600.0,
+          "time_h": 36.0,
+          "root_count": 1,
+          "roots": [
+            0.05578875507435496
+          ],
+          "adopted_root": 0.05578875507435496,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 172800.0,
+          "time_h": 48.0,
+          "root_count": 1,
+          "roots": [
+            0.05285759727935358
+          ],
+          "adopted_root": 0.05285759727935358,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 182956.14755227897,
+          "time_h": 50.82115209785527,
+          "root_count": 1,
+          "roots": [
+            0.052496401177448124
+          ],
+          "adopted_root": 0.052496401177448554,
+          "adopted_is_first_from_cell": true
+        }
+      ],
+      "all_single_root": true,
+      "adopted_continuous_nonincreasing": true
+    },
+    "runtime_s": 73.48451139999815,
+    "nfev": 26401
+  },
+  "radius_linear": {
+    "cells": 2561,
+    "rtol": 1e-08,
+    "max_step_s": 60.0,
+    "radius_interpolation": "linear",
+    "end_time_s": 182968.71912962483,
+    "end_time_h": 50.82464420267357,
+    "end_surface_C": 0.052496401177971636,
+    "end_axis_C": 0.14999999999999997,
+    "end_max_C": 0.14999999999999997,
+    "end_argmax_cm": 0.0,
+    "end_radius_cm": 1.2,
+    "records": [
+      {
+        "time_h": 6.0,
+        "fixed_C": [
+          1.7172231830017193,
+          1.53568481018001,
+          1.0217121024672369,
+          null
+        ],
+        "surface_C": 0.4217036838261281,
+        "axis_C": 1.7172231830017193,
+        "radius_cm": 1.374
+      },
+      {
+        "time_h": 12.0,
+        "fixed_C": [
+          0.7343475081717676,
+          0.6518285189159319,
+          0.406930016065813,
+          null
+        ],
+        "surface_C": 0.1666773520421421,
+        "axis_C": 0.7343475081717676,
+        "radius_cm": 1.248
+      },
+      {
+        "time_h": 18.0,
+        "fixed_C": [
+          0.40663821211312046,
+          0.3668377743948915,
+          0.23878823916903597,
+          null
+        ],
+        "surface_C": 0.08886417436908696,
+        "axis_C": 0.40663821211312046,
+        "radius_cm": 1.214
+      },
+      {
+        "time_h": 24.0,
+        "fixed_C": [
+          0.28374278151608084,
+          0.2598609520085746,
+          0.17832594013838277,
+          null
+        ],
+        "surface_C": 0.0670965261418026,
+        "axis_C": 0.28374278151608084,
+        "radius_cm": 1.204
+      },
+      {
+        "time_h": 30.0,
+        "fixed_C": [
+          0.22533859501252904,
+          0.20851452743195567,
+          0.14876062909686597,
+          null
+        ],
+        "surface_C": 0.059295014342533627,
+        "axis_C": 0.22533859501252904,
+        "radius_cm": 1.201
+      },
+      {
+        "time_h": 36.0,
+        "fixed_C": [
+          0.19205370391469373,
+          0.1789757482947393,
+          0.1312502638363527,
+          null
+        ],
+        "surface_C": 0.05579018156324003,
+        "axis_C": 0.19205370391469373,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 42.0,
+        "fixed_C": [
+          0.1706129353774635,
+          0.15981322211784818,
+          0.11963029782172503,
+          null
+        ],
+        "surface_C": 0.0539435011250474,
+        "axis_C": 0.1706129353774635,
+        "radius_cm": 1.2
+      },
+      {
+        "time_h": 48.0,
+        "fixed_C": [
+          0.15561780764566266,
+          0.1463302105652212,
+          0.11125959180476903,
+          null
+        ],
+        "surface_C": 0.052858091775173095,
+        "axis_C": 0.15561780764566266,
+        "radius_cm": 1.2
+      }
+    ],
+    "root_audit": {
+      "scan_points": 4097,
+      "records": [
+        {
+          "time_s": 3600.0,
+          "time_h": 1.0,
+          "root_count": 1,
+          "roots": [
+            0.9838410843268173
+          ],
+          "adopted_root": 0.9838410843268223,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 14400.0,
+          "time_h": 4.0,
+          "root_count": 1,
+          "roots": [
+            0.5766218825722672
+          ],
+          "adopted_root": 0.5766218825722672,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 21600.0,
+          "time_h": 6.0,
+          "root_count": 1,
+          "roots": [
+            0.42170368382616286
+          ],
+          "adopted_root": 0.4217036838261281,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 43200.0,
+          "time_h": 12.0,
+          "root_count": 1,
+          "roots": [
+            0.16667735204214223
+          ],
+          "adopted_root": 0.1666773520421421,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 86400.0,
+          "time_h": 24.0,
+          "root_count": 1,
+          "roots": [
+            0.06709652614179212
+          ],
+          "adopted_root": 0.0670965261418026,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 129600.0,
+          "time_h": 36.0,
+          "root_count": 1,
+          "roots": [
+            0.05579018156324003
+          ],
+          "adopted_root": 0.05579018156324003,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 172800.0,
+          "time_h": 48.0,
+          "root_count": 1,
+          "roots": [
+            0.052858091775173095
+          ],
+          "adopted_root": 0.052858091775173095,
+          "adopted_is_first_from_cell": true
+        },
+        {
+          "time_s": 182968.71912962483,
+          "time_h": 50.82464420267357,
+          "root_count": 1,
+          "roots": [
+            0.05249640117797121
+          ],
+          "adopted_root": 0.052496401177971636,
+          "adopted_is_first_from_cell": true
+        }
+      ],
+      "all_single_root": true,
+      "adopted_continuous_nonincreasing": true
+    },
+    "runtime_s": 58.293165499999304,
+    "nfev": 21082
+  }
+}

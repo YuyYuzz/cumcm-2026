@@ -1,0 +1,202 @@
+{
+  "grid_cells": 2561,
+  "common_bdf": {
+    "rtol": 1e-08,
+    "atol_T": 1e-10,
+    "atol_C": 1e-11,
+    "max_step_s": 60.0
+  },
+  "cases": {
+    "C": {
+      "label": "C",
+      "property_set": "appendix3",
+      "geometry": "fixed",
+      "end_time_s": 205818.35090782054,
+      "end_time_h": 57.17176414106126,
+      "end_time_d": 2.382156839210886,
+      "end_radius_cm": 2.0,
+      "end_max_moisture": 0.15,
+      "end_max_radius_cm": 0.0,
+      "end_axis_C": 0.15,
+      "end_surface_C": 0.052535914710751364,
+      "sample_records": [
+        {
+          "time_h": 6.0,
+          "axis_C": 1.0155504220277691,
+          "surface_C": 0.5334558665903589,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 12.0,
+          "axis_C": 0.45475757923301824,
+          "surface_C": 0.16394862909166338,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 24.0,
+          "axis_C": 0.23710015155849803,
+          "surface_C": 0.0662676701020778,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 36.0,
+          "axis_C": 0.18540871991758534,
+          "surface_C": 0.05648190571982186,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 48.0,
+          "axis_C": 0.16146192686894126,
+          "surface_C": 0.05358089598677874,
+          "radius_cm": 2.0
+        }
+      ],
+      "runtime_s": 129.1606071999995,
+      "nfev": 21120
+    },
+    "D": {
+      "label": "D",
+      "property_set": "appendix3",
+      "geometry": "moving",
+      "end_time_s": 90480.27073245974,
+      "end_time_h": 25.133408536794374,
+      "end_time_d": 1.0472253556997655,
+      "end_radius_cm": 1.203,
+      "end_max_moisture": 0.14999999999999997,
+      "end_max_radius_cm": 0.0,
+      "end_axis_C": 0.14999999999999997,
+      "end_surface_C": 0.05431058730888884,
+      "sample_records": [
+        {
+          "time_h": 6.0,
+          "axis_C": 0.677813506646218,
+          "surface_C": 0.3847282015117172,
+          "radius_cm": 1.374
+        },
+        {
+          "time_h": 12.0,
+          "axis_C": 0.2545802081202337,
+          "surface_C": 0.08390128215761203,
+          "radius_cm": 1.248
+        },
+        {
+          "time_h": 24.0,
+          "axis_C": 0.15348267141909464,
+          "surface_C": 0.05479742800385042,
+          "radius_cm": 1.204
+        }
+      ],
+      "runtime_s": 105.59143089999998,
+      "nfev": 17282
+    },
+    "A": {
+      "label": "A",
+      "property_set": "appendix4",
+      "geometry": "fixed",
+      "end_time_s": 464741.99465127505,
+      "end_time_h": 129.09499851424306,
+      "end_time_d": 5.378958271426795,
+      "end_radius_cm": 2.0,
+      "end_max_moisture": 0.15,
+      "end_max_radius_cm": 0.0,
+      "end_axis_C": 0.15,
+      "end_surface_C": 0.05144131760344266,
+      "sample_records": [
+        {
+          "time_h": 6.0,
+          "axis_C": 2.19888545530224,
+          "surface_C": 0.445755669126412,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 12.0,
+          "axis_C": 1.4296273950115455,
+          "surface_C": 0.2516112126333923,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 24.0,
+          "axis_C": 0.6982199626098917,
+          "surface_C": 0.11525157377517958,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 36.0,
+          "axis_C": 0.4377251601676085,
+          "surface_C": 0.07709610682634534,
+          "radius_cm": 2.0
+        },
+        {
+          "time_h": 48.0,
+          "axis_C": 0.32256782022666913,
+          "surface_C": 0.06390210911387496,
+          "radius_cm": 2.0
+        }
+      ],
+      "runtime_s": 194.31247050000093,
+      "nfev": 30697
+    },
+    "B": {
+      "label": "B",
+      "property_set": "appendix4",
+      "geometry": "moving",
+      "end_time_s": 182956.14779259945,
+      "end_time_h": 50.82115216461096,
+      "end_time_d": 2.11754800685879,
+      "end_radius_cm": 1.2,
+      "end_max_moisture": 0.15,
+      "end_max_radius_cm": 0.0,
+      "end_axis_C": 0.15,
+      "end_surface_C": 0.052496401177438465,
+      "sample_records": [
+        {
+          "time_h": 6.0,
+          "axis_C": 1.7164244107873865,
+          "surface_C": 0.42151946808448676,
+          "radius_cm": 1.374
+        },
+        {
+          "time_h": 12.0,
+          "axis_C": 0.7340340478550638,
+          "surface_C": 0.16659880044549488,
+          "radius_cm": 1.248
+        },
+        {
+          "time_h": 24.0,
+          "axis_C": 0.28369592850733844,
+          "surface_C": 0.0670897831631084,
+          "radius_cm": 1.204
+        },
+        {
+          "time_h": 36.0,
+          "axis_C": 0.1920385224722425,
+          "surface_C": 0.05578875510104519,
+          "radius_cm": 1.2
+        },
+        {
+          "time_h": 48.0,
+          "axis_C": 0.15561038045147424,
+          "surface_C": 0.05285759728875249,
+          "radius_cm": 1.2
+        }
+      ],
+      "runtime_s": 136.79176030000235
+    }
+  },
+  "effects": {
+    "property_main_A_minus_C_s": 258923.6437434545,
+    "property_main_A_minus_C_h": 71.92323437318181,
+    "shrink_at_appendix4_B_minus_A_s": -281785.8468586756,
+    "shrink_at_appendix4_B_minus_A_h": -78.27384634963211,
+    "shrink_at_appendix3_D_minus_C_s": -115338.0801753608,
+    "shrink_at_appendix3_D_minus_C_h": -32.03835560426689,
+    "interaction_I_s": -166447.76668331478,
+    "interaction_I_h": -46.23549074536522
+  },
+  "q3_fixed_appendix3_reproduction": {
+    "q4_skeleton_end_time_s": 205818.35090782054,
+    "frozen_q3_end_time_s": 205818.35096859455,
+    "difference_s": -6.077400757931173e-05,
+    "difference_abs_s": 6.077400757931173e-05
+  }
+}

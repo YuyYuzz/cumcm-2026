@@ -1,0 +1,158 @@
+\section{问题四：考虑径向收缩的耦合传热传质模型}
+
+问题四在问题三全域达标判定的基础上，进一步考虑药材半径随烘干过程变化，并采用附录4的物性关系。新增的困难在于：传递距离随时间缩短，固定观测位置可能移出药材，而物性变化又会改变内部水分迁移速率。因此，本问将移动区域映射到固定材料坐标，在同一框架下求解温度场、水分场与临界烘干时间。
+
+本文保持药材长度 $L=0.25\,\mathrm{m}$ 不变，仅考虑径向收缩，忽略周向和轴向变化，模型适用于圆柱主体区域。初始半径为 $R_0=0.02\,\mathrm{m}$；将附件2的全部半径数据换算为米后，采用保形分段三次 Hermite 插值（PCHIP）构造 $R(t)$\cite{fritsch1980}。计算得到的终止时刻位于附件2时间范围内，无需对半径作外推。几何尺寸完全由 $R(t)$ 确定，经验密度 $\rho(C)$ 仅作为热物性参数，不用于反推半径或体积。
+
+为跟踪收缩中的材料位置，假设药材骨架沿径向随半径同比例缩放，采用移动边界问题中的材料坐标变换\cite{crank1984}，定义
+\begin{equation}
+\xi=\frac{r}{R(t)},\qquad 0\leq\xi\leq1.
+\label{eq:q4-coordinate}
+\end{equation}
+固定 $\xi$ 对应随骨架运动的材料位置，其物理半径为 $r=\xi R(t)$。以下仍用 $T(\xi,t)$、$C(\xi,t)$ 表示温度和干基水分浓度，时间导数均在固定 $\xi$ 下计算。该处理将材料运动纳入坐标描述，不再另加收缩对流项。
+
+环境边界沿用问题三的处理：附件1在 $0$--$14400\,\mathrm{s}$ 内作分段线性插值，此后保持 $T_a=50.165\,{}^\circ\mathrm{C}$、$C_a=0.04986\,\mathrm{kg/kg}$。长度不变、材料位置同比例缩放及环境末值延拓均为本文的补充假设。
+
+\subsection{移动边界材料坐标模型的建立}
+
+材料坐标将计算区域固定为 $[0,1]$，空间梯度中的长度尺度则由实时半径决定。沿用前两问的扩散与导热描述，控制方程写为
+\begin{equation}
+\rho(C)c_p(C)\frac{\partial T}{\partial t}
+=\frac{1}{R(t)^2\xi}\frac{\partial}{\partial\xi}
+\left[\xi k(C)\frac{\partial T}{\partial\xi}\right],
+\label{eq:q4-temperature}
+\end{equation}
+\begin{equation}
+\frac{\partial C}{\partial t}
+=\frac{1}{R(t)^2\xi}\frac{\partial}{\partial\xi}
+\left[\xi D(C,T)\frac{\partial C}{\partial\xi}\right].
+\label{eq:q4-moisture}
+\end{equation}
+其中 $R(t)^{-2}$ 体现收缩对径向传递尺度的影响。温度与水分通过当前状态下的物性相联系，仍同步求解；本文继续忽略蒸发潜热和吸附等温线等机制，作为对实际烘干过程的简化。
+
+附录4给出的物性关系为
+\begin{equation}
+\begin{aligned}
+\rho(C)&=760+90C,\\
+c_p(C)&=1850+2150\frac{C}{C+1},\\
+k(C)&=0.12+0.20\frac{C}{C+1},\\
+D(C,T)&=4.2\times10^{-4}\exp\!\left(-\frac{0.30}{C}\right)
+\exp\!\left(-\frac{3850}{T_K}\right),\qquad T_K=T+273.15.
+\end{aligned}
+\label{eq:q4-properties}
+\end{equation}
+上述四项物性的单位依次为 $\mathrm{kg/m^3}$、$\mathrm{J/(kg\cdot K)}$、$\mathrm{W/(m\cdot K)}$ 和 $\mathrm{m^2/s}$。$D(C,T)$ 沿用前文的函数记法，但指数项始终代入绝对温度 $T_K$，$T$、$T_a$、$T_s$ 仍表示摄氏温度。
+
+本问从均匀初始状态 $T(\xi,0)=28\,{}^\circ\mathrm{C}$、$C(\xi,0)=2.55\,\mathrm{kg/kg}$ 独立计算。轴线采用零通量条件，真实表面采用第三类对流边界：
+\begin{equation}
+T_\xi(0,t)=0,\qquad C_\xi(0,t)=0,
+\label{eq:q4-axis-bc}
+\end{equation}
+\begin{equation}
+-\frac{k(C_s)}{R(t)}T_\xi(1,t)=h(T_s-T_a),\qquad
+-\frac{D(C_s,T_s)}{R(t)}C_\xi(1,t)=h_m(C_s-C_a).
+\label{eq:q4-surface-bc}
+\end{equation}
+这里 $T_s=T(1,t)$、$C_s=C(1,t)$ 均对应实时表面；径向正方向仍由轴线指向表面。附录4未另给边界传递系数，本文沿用 $h=25\,\mathrm{W/(m^2\cdot K)}$ 和 $h_m=8\times10^{-7}\,\mathrm{m/s}$。
+
+\subsection{模型的求解}
+
+在固定材料区间上划分 $N$ 个环形控制体，采用与问题三一致的守恒有限体积法。内部界面物性取调和平均，表面半网格的物理长度随时间更新为 $R(t)\Delta\xi/2$，其中 $\Delta\xi=1/N$。通过半网格传递关系与式\eqref{eq:q4-surface-bc}联立重构表面状态，以避免将最外控制体中心值误作表面值。采用 BDF 同步积分温度和水分，正式计算取 $N=2561$，相对容差 $10^{-8}$，温度和水分绝对容差分别为 $10^{-10}$、$10^{-11}$，最大内部步长为 $60\,\mathrm{s}$。
+
+沿用问题三的全域判停方法，令
+\begin{equation}
+C_{\max}(t)=\max\{C_{\mathrm{axis}}(t),C_1(t),\ldots,C_N(t),C_s(t)\},
+\qquad C_{\max}(t_e)=0.15\,\mathrm{kg/kg}.
+\label{eq:q4-event}
+\end{equation}
+其中轴线值由最内两个控制体中心关于 $\xi^2$ 的两点线性外推得到。连续事件检测寻找阈值函数首次向下穿越零点的时刻，并在终点用 $10001$ 个材料坐标点重构水分场，复核最大值及其位置。
+
+固定物理位置 $r_q$ 的输出通过 $\xi_q=r_q/R(t)$ 定位。当 $r_q>R(t)$ 时，该位置已不属于药材，输出留空；表面列始终取 $\xi=1$，不受固定位置列的变化影响。结果按 $60\,\mathrm{s}$ 的间隔保存，空间插值仅在当前药材域内进行。
+
+\subsection{结果的得出与分析}
+
+连续事件检测得到全域最大水分浓度首次降至阈值的临界时刻为
+\begin{equation}
+t_e=182956.15\,\mathrm{s}\approx50.82\,\mathrm{h}.
+\label{eq:q4-end-time}
+\end{equation}
+此时药材半径为 $1.2000\,\mathrm{cm}$，最大水分浓度位于轴线，表面水分浓度约为 $0.0525\,\mathrm{kg/kg}$。临界时刻满足等于阈值，其后进入全域严格低于 $0.15\,\mathrm{kg/kg}$ 的区域。按每 $60\,\mathrm{s}$ 保存的最后一个规则采样点为 $182940\,\mathrm{s}$，应与连续事件时刻区分。
+
+表\ref{tab:q4-moisture}给出题目指定时刻及位置的水分浓度，末行单列连续事件时刻。表中“---”表示该固定位置已在当前药材域外，对应结果文件中的空单元格。末列为实时移动表面，不能当作固定半径位置。
+\begin{table}[H]
+\centering
+\caption{径向收缩条件下典型时刻与位置的水分浓度}
+\label{tab:q4-moisture}
+\zihao{-5}
+\begin{tabular}{@{}crrrrrr@{}}
+\toprule
+\multicolumn{7}{c}{$C(r,t)/(\mathrm{kg/kg})$}\\
+\midrule
+$t/\mathrm{h}$ & $r=0\,\mathrm{cm}$ & $r=0.5\,\mathrm{cm}$ & $r=1.0\,\mathrm{cm}$ & $r=1.5\,\mathrm{cm}$ & $r=2.0\,\mathrm{cm}$ & $r=R(t)$ \\
+\midrule
+6 & 1.7164 & 1.5350 & 1.0212 & --- & --- & 0.4215 \\
+12 & 0.7340 & 0.6516 & 0.4068 & --- & --- & 0.1666 \\
+18 & 0.4065 & 0.3667 & 0.2387 & --- & --- & 0.0888 \\
+24 & 0.2837 & 0.2598 & 0.1783 & --- & --- & 0.0671 \\
+30 & 0.2253 & 0.2085 & 0.1487 & --- & --- & 0.0593 \\
+36 & 0.1920 & 0.1790 & 0.1312 & --- & --- & 0.0558 \\
+42 & 0.1706 & 0.1598 & 0.1196 & --- & --- & 0.0539 \\
+48 & 0.1556 & 0.1463 & 0.1113 & --- & --- & 0.0529 \\
+50.8212 & 0.1500 & 0.1413 & 0.1081 & --- & --- & 0.0525 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+在 $6\,\mathrm{h}$ 时，半径已缩至 $1.374\,\mathrm{cm}$，因此表中固定 $r=1.5\,\mathrm{cm}$ 和 $r=2.0\,\mathrm{cm}$ 两列均无有效值。到 $30\,\mathrm{h}$，$r=1.0\,\mathrm{cm}$ 处已低于阈值，但轴线仍为 $0.2253\,\mathrm{kg/kg}$；即使在 $48\,\mathrm{h}$，轴线也尚未达标。这说明局部或表面达标不能代替全域终止判定。
+
+\par\addvspace{\medskipamount}
+\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+图\ref{fig:q4-profiles}以物理半径展示典型时刻的水分分布，各曲线右端即为该时刻的真实表面。
+\par\smallskip
+\centering
+\includegraphics[width=0.78\linewidth]{q4/q4_moving_profiles.pdf}
+\captionof{figure}{径向收缩过程中典型时刻的水分浓度剖面}
+\label{fig:q4-profiles}
+\end{minipage}
+\par\addvspace{\medskipamount}
+
+随烘干推进，曲线右端向轴线移动，内部水分浓度逐步下降。后期表面浓度已接近环境值，轴线仍保留较高水分；同时式\eqref{eq:q4-properties}中的水分因子随 $C$ 降低而减小，使内部迁移逐渐放缓。因此，半径缩短虽有利于传递，仍不能消除后期内部水分对烘干时间的控制。
+
+\subsubsection{物性变化与径向收缩的影响}
+
+问题三与问题四同时改变了物性和几何条件，直接比较两问时间无法单独识别收缩的作用。为此，在相同初始状态、环境边界及数值设置下，分别组合附录3、附录4物性与固定半径、附件2收缩轨迹，所得临界时间见表\ref{tab:q4-comparison}。
+\begin{table}[H]
+\centering
+\caption{不同物性与几何条件下的临界烘干时间}
+\label{tab:q4-comparison}
+\zihao{-5}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+物性条件 & 固定半径 $t_e/\mathrm{h}$ & 径向收缩 $t_e/\mathrm{h}$ \\
+\midrule
+附录3 & 57.17 & 25.13 \\
+附录4 & 129.09 & 50.82 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+固定半径下，改用附录4物性使临界时间延长约 $71.92\,\mathrm{h}$。保持物性不变时，引入同一收缩轨迹在附录3和附录4条件下分别缩短约 $32.04\,\mathrm{h}$ 和 $78.27\,\mathrm{h}$。材料坐标方程中的 $R(t)^{-2}$ 因子反映了收缩对传递尺度的影响：半径减小缩短内部水分的特征扩散距离，两组物性条件下收缩模型的临界时间均缩短，与这一作用方向一致。两者差异说明，收缩效应依赖物性条件，不能视为与物性无关的固定贡献。问题四相较问题三约缩短 $6.35\,\mathrm{h}$，是两项变化共同作用的结果；上述比较属于给定模型下的条件对照，不构成实验因果验证。
+
+\subsubsection{数值可靠性与模型自洽性检验}
+
+\textbf{数值收敛性。} 随空间网格由 $N=641$ 加密至 $1281$、$2561$ 和 $5121$，相邻网格的临界时间差由 $15.44\,\mathrm{s}$ 依次减小至 $4.38\,\mathrm{s}$ 和 $1.18\,\mathrm{s}$，表\ref{tab:q4-moisture}常规时刻有效位置的最大浓度差降至 $1.43\times10^{-6}\,\mathrm{kg/kg}$，支持正式网格下四位小数结果的稳定性。将相对容差由 $10^{-7}$ 收紧至 $10^{-8}$，临界时间仅变化 $0.0102\,\mathrm{s}$；最大内部步长由 $60\,\mathrm{s}$ 减至 $30\,\mathrm{s}$ 时仅变化 $0.00024\,\mathrm{s}$。时间积分设置引起的变化远小于所检验的空间网格差异。
+
+\textbf{守恒性检验。} 对式\eqref{eq:q4-moisture}乘以 $\xi$ 并在材料区间积分，结合表面边界可得
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t}\int_0^1 C(\xi,t)\xi\,\mathrm{d}\xi
+=-\frac{h_m}{R(t)}(C_s-C_a).
+\label{eq:q4-balance}
+\end{equation}
+该式检验材料坐标模型的全域积分量与表面通量是否一致。有限体积离散的瞬时水分平衡相对残差约为 $1.69\times10^{-16}$，达到机器精度量级；利用 $60\,\mathrm{s}$ 输出节点累计边界通量，终点累计相对残差约为 $2.02\times10^{-4}$。两者分别反映共享界面通量的离散一致性和输出节点上的累计积分误差。
+
+\textbf{结构性检验。} 在 $D=0$、$h_m=0$ 的极限下，式\eqref{eq:q4-moisture}退化为固定材料位置上 $\partial C/\partial t=0$，即使半径收缩，水分浓度也应保持不变。对这一极限方程的辅助积分得到零浓度变化，与材料坐标描述一致。另将移动域程序设置为固定半径并采用附录3物性，所得临界时间与问题三基准计算结果之差约为 $6.08\times10^{-5}\,\mathrm{s}$，支持程序在固定域退化条件下的一致性。
+
+\textbf{边界稳定性检验。} 对 $1$、$4$、$6$、$12$、$24$、$36$、$48\,\mathrm{h}$ 及终点的非线性表面边界方程分别作数值扫描，均仅检测到一个物理解，未发现这些时刻存在多根或根分支折叠。该结果限定于所审计时刻，不推及全部参数情景。
+
+以上检验支持给定模型的数值可靠性与内部一致性，不能替代实验验证。模型仍依赖附件2收缩轨迹、材料位置同比例缩放及环境末值延拓；在这些条件下，药材全域达到水分阈值的临界时间约为 $50.82\,\mathrm{h}$，终点由轴线水分控制。

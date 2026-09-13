@@ -1,0 +1,51 @@
+\section{支撑材料文件清单}
+
+电子支撑材料按问题分目录保存，包含各问主程序、验证程序、绘图程序、诊断程序及最终结果表格。
+
+\begin{table}[H]
+\centering
+\caption{电子支撑材料文件清单}
+\label{tab:supporting-materials-list}
+\zihao{-5}
+\begin{tabular}{@{}ll@{}}
+\toprule
+目录或文件 & 内容 \\
+\midrule
+\texttt{Q1/} & \texttt{q1\_main.py}、\texttt{q1\_validation.py}、\texttt{plot\_q1.py} \\
+\texttt{Q2/} & \texttt{q2\_main.py}、\texttt{q2\_validation.py}、\texttt{plot\_q2.py} \\
+\texttt{Q3/} & \texttt{q3\_main.py}、\texttt{q3\_validation.py}、\texttt{plot\_q3.py} \\
+\texttt{Q4/} & \texttt{q4\_main.py}、\texttt{q4\_validation.py}、\texttt{plot\_q4.py} \\
+\texttt{Q4/diagnostics/} & \texttt{q4\_effect\_decomposition.py}、\texttt{q4\_zero\_diffusion\_test.py} \\
+\texttt{results/} & \texttt{result1.xlsx}--\texttt{result4.xlsx} \\
+AI工具使用详情.pdf & AI 辅助用途、主要提示过程、采纳修改及核验记录 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{完整源程序}
+
+以下列出与电子支撑材料一致的主程序、验证程序、绘图程序和诊断程序。
+
+\subsection{问题一}
+\lstinputlisting[language=Python,caption={问题一模型求解程序}]{supporting_materials/Q1/q1_main.py}
+\lstinputlisting[language=Python,caption={问题一验证程序}]{supporting_materials/Q1/q1_validation.py}
+\lstinputlisting[language=Python,caption={问题一绘图程序}]{supporting_materials/Q1/plot_q1.py}
+
+\subsection{问题二}
+\lstinputlisting[language=Python,caption={问题二模型求解程序}]{supporting_materials/Q2/q2_main.py}
+\lstinputlisting[language=Python,caption={问题二验证程序}]{supporting_materials/Q2/q2_validation.py}
+\lstinputlisting[language=Python,caption={问题二绘图程序}]{supporting_materials/Q2/plot_q2.py}
+
+\subsection{问题三}
+\lstinputlisting[language=Python,caption={问题三模型求解程序}]{supporting_materials/Q3/q3_main.py}
+\lstinputlisting[language=Python,caption={问题三验证程序}]{supporting_materials/Q3/q3_validation.py}
+\lstinputlisting[language=Python,caption={问题三绘图程序}]{supporting_materials/Q3/plot_q3.py}
+
+\subsection{问题四}
+\lstinputlisting[language=Python,caption={问题四模型求解程序}]{supporting_materials/Q4/q4_main.py}
+\lstinputlisting[language=Python,caption={问题四验证程序}]{supporting_materials/Q4/q4_validation.py}
+\lstinputlisting[language=Python,caption={问题四绘图程序}]{supporting_materials/Q4/plot_q4.py}
+
+\subsubsection{Q4结构诊断程序}
+\lstinputlisting[language=Python,caption={第四问物性参数与径向收缩效应分解程序}]{supporting_materials/Q4/diagnostics/q4_effect_decomposition.py}
+\lstinputlisting[language=Python,caption={第四问零扩散极限结构检验程序}]{supporting_materials/Q4/diagnostics/q4_zero_diffusion_test.py}

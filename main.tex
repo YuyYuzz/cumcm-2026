@@ -1,0 +1,48 @@
+% 2026 全国规范电子版唯一正式入口。
+% 不要移除 withoutpreface 或 notoc：电子版不得包含承诺书、编号页或目录。
+% 使用 TeX Live 自带的 Fandol 中文字体，避免依赖本机 STSong/STHeiti。
+\PassOptionsToPackage{fontset=fandol}{ctex}
+\documentclass[withoutpreface,notoc,bwprint]{cumcmthesis}
+
+% 公共宏包、图片路径与自定义命令。
+\input{config/preamble.tex}
+
+% 论文标题等基本信息。
+\input{contents/info.tex}
+
+\begin{document}
+
+\maketitle
+% 上游首页隐藏页码；2026 规范要求摘要页从 1 开始编号。
+\thispagestyle{plain}
+
+% 摘要页。
+\input{contents/abstract.tex}
+
+% 正文。按文件拆分，方便并行写作和版本管理。
+\input{contents/sections/01_problem_statement.tex}
+\input{contents/sections/02_problem_analysis.tex}
+\input{contents/sections/03_assumptions.tex}
+\input{contents/sections/04_symbols.tex}
+\input{contents/sections/05_problem_1.tex}
+\input{contents/sections/06_problem_2.tex}
+\input{contents/sections/07_problem_3.tex}
+% 若赛题只有三个问题，可删除或注释下一行。
+\input{contents/sections/08_problem_4.tex}
+\input{contents/sections/09_validation.tex}
+\input{contents/sections/10_evaluation.tex}
+\input{contents/sections/11_conclusion.tex}
+
+% 2026 年 AI 工具使用声明须置于参考文献之前。
+\input{contents/ai_usage.tex}
+
+% 参考文献。
+\input{contents/references.tex}
+
+% 附录与支撑材料清单。
+\newpage
+\begin{appendices}
+\input{contents/appendix/supporting_materials.tex}
+\end{appendices}
+
+\end{document}

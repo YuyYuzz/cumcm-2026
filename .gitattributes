@@ -1,0 +1,14 @@
+* text=auto eol=lf
+
+# Binary inputs and outputs
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.eps binary
+*.xlsx binary
+*.xls binary
+*.docx binary
+*.doc binary
+*.zip binary
+*.ttf binary

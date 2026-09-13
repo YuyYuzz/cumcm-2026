@@ -1,0 +1,5 @@
+interface:
+  display_name: "CUMCM优秀论文写作"
+  short_description: "依据优秀论文证据规划、改写并审查数学建模论文正文"
+  default_prompt: "Use $cumcm-excellent-paper-writing to plan, draft, and review this mathematical modeling paper section."
+

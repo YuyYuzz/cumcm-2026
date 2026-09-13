@@ -1,0 +1,116 @@
+{
+  "purpose": "低湿情景离散非线性表面方程根数量诊断",
+  "source": "q3_solution.npz 的冻结外层控制体快照",
+  "post_14400_Ca_kg_kg": 0.03,
+  "grid_cells": 2561,
+  "reported_end_time": null,
+  "included_in_formal_validation": false,
+  "records": [
+    {
+      "time_s": 14400.0,
+      "outer_cell_temperature_c": 49.99939980499348,
+      "outer_cell_moisture_kg_kg": 0.8156045378779997,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.8153394659117887
+      ]
+    },
+    {
+      "time_s": 21600.0,
+      "outer_cell_temperature_c": 50.16473289062699,
+      "outer_cell_moisture_kg_kg": 0.5336730204935667,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.5334469524700396
+      ]
+    },
+    {
+      "time_s": 43200.0,
+      "outer_cell_temperature_c": 50.16499999999994,
+      "outer_cell_moisture_kg_kg": 0.16429063990207166,
+      "root_count": 3,
+      "surface_roots_kg_kg": [
+        0.16388907170737166,
+        0.03709396712722528,
+        0.030556548766162837
+      ]
+    },
+    {
+      "time_s": 64800.0,
+      "outer_cell_temperature_c": 50.165,
+      "outer_cell_moisture_kg_kg": 0.0855507265836692,
+      "root_count": 3,
+      "surface_roots_kg_kg": [
+        0.08342134201764859,
+        0.043283475594259574,
+        0.030192924793469116
+      ]
+    },
+    {
+      "time_s": 86400.0,
+      "outer_cell_temperature_c": 50.165,
+      "outer_cell_moisture_kg_kg": 0.06877779679416393,
+      "root_count": 3,
+      "surface_roots_kg_kg": [
+        0.062349337003646525,
+        0.04855907322870768,
+        0.03013057593112558
+      ]
+    },
+    {
+      "time_s": 108000.0,
+      "outer_cell_temperature_c": 50.165,
+      "outer_cell_moisture_kg_kg": 0.06268806277064552,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.03010887411272439
+      ]
+    },
+    {
+      "time_s": 129600.0,
+      "outer_cell_temperature_c": 50.165000000000006,
+      "outer_cell_moisture_kg_kg": 0.05955094803941909,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.030097872205544142
+      ]
+    },
+    {
+      "time_s": 151200.0,
+      "outer_cell_temperature_c": 50.165,
+      "outer_cell_moisture_kg_kg": 0.057596721193991084,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.03009107672229503
+      ]
+    },
+    {
+      "time_s": 172800.0,
+      "outer_cell_temperature_c": 50.165,
+      "outer_cell_moisture_kg_kg": 0.05624861595069135,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.030086413887514617
+      ]
+    },
+    {
+      "time_s": 194400.0,
+      "outer_cell_temperature_c": 50.165,
+      "outer_cell_moisture_kg_kg": 0.05526094603586992,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.030083010253416802
+      ]
+    },
+    {
+      "time_s": 205818.35096859455,
+      "outer_cell_temperature_c": 50.165,
+      "outer_cell_moisture_kg_kg": 0.05483907188399167,
+      "root_count": 1,
+      "surface_roots_kg_kg": [
+        0.030081559572187746
+      ]
+    }
+  ],
+  "limitation": "该脚本只审计离散表面方程，不构成低湿情景的长程求解；根数量与折叠位置可能随网格和状态变化，因此不报告精确烘干时间。"
+}

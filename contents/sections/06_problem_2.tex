@@ -1,0 +1,190 @@
+\section{问题二：变物性耦合传热传质模型}
+
+问题二将问题一的时间窗口由 $1800\,\mathrm{s}$ 扩展到 $10800\,\mathrm{s}$，要求在相同径向位置给出前三小时的温度和含水率演化。问题一中物性参数取常数，温度场与水分场可以解耦；问题二根据附录3引入含水率相关的密度、比热容和导热系数，并使水分扩散系数同时依赖含水率和温度。因此，本问继承问题一的固定尺寸一维径向几何、初始条件、环境数据插值和第三类表面边界，但将两个独立方程升级为温度—水分双向参数耦合系统。
+
+药材仍近似为半径 $R=0.02\,\mathrm{m}$、长度 $L=0.25\,\mathrm{m}$ 的轴对称长圆柱，仅描述 $r\in[0,R]$ 上的径向过程。该模型主要适用于圆柱主体区域，忽略周向和轴向变化，不能刻画靠近两端端面的局部轴向效应。问题二从题目给定的 $t=0$ 状态重新计算，不续接问题一在 $1800\,\mathrm{s}$ 时的数值状态，也暂不考虑尺寸收缩。由于从 $t=0$ 起即采用附录3变物性重新计算，其 $1800\,\mathrm{s}$ 状态不要求与问题一采用附录2物性所得结果一致。
+
+\subsection{变物性热质耦合模型的建立}
+
+问题二需要同时描述热量储存、热传导和水分扩散。令 $T(r,t)$ 为摄氏温度，$C(r,t)$ 为干基含水率，则温度场满足
+\begin{equation}
+\rho(C)c_p(C)\frac{\partial T}{\partial t}
+=\frac{1}{r}\frac{\partial}{\partial r}
+\left[rk(C)\frac{\partial T}{\partial r}\right],
+\qquad 0<r<R,
+\label{eq:q2-temperature}
+\end{equation}
+水分场满足
+\begin{equation}
+\frac{\partial C}{\partial t}
+=\frac{1}{r}\frac{\partial}{\partial r}
+\left[rD(C,T)\frac{\partial C}{\partial r}\right],
+\qquad 0<r<R.
+\label{eq:q2-moisture}
+\end{equation}
+
+式\eqref{eq:q2-temperature}中的储热系数、导热系数和式\eqref{eq:q2-moisture}中的扩散系数均随状态变化。附录3给出的关系为
+\begin{equation}
+\rho(C)=650+128C,
+\label{eq:q2-density}
+\end{equation}
+\begin{equation}
+c_p(C)=1450+2736\frac{C}{C+1},
+\qquad
+k(C)=0.21+0.38\frac{C}{C+1},
+\label{eq:q2-properties}
+\end{equation}
+\begin{equation}
+D(C,T)=2.4\times10^{-3}
+\exp\left(-\frac{0.45}{C}\right)
+\exp\left(-\frac{3850}{T_K}\right)\,\mathrm{m^2/s}.
+\label{eq:q2-diffusivity}
+\end{equation}
+
+$T$、$T_a$ 和 $T_s$ 均为摄氏温度；Arrhenius 关系采用绝对温度，记
+\begin{equation}
+T_K=T+273.15,
+\label{eq:q2-kelvin}
+\end{equation}
+并在式\eqref{eq:q2-diffusivity}中使用 $T_K$。由式\eqref{eq:q2-density}--\eqref{eq:q2-diffusivity}可见，$C$ 会改变 $\rho$、$c_p$、$k$ 和 $D$，而 $T$ 会通过 $T_K$ 改变 $D$，求解时需要同步更新物性参数，以反映两个场之间的相互影响。
+
+取题目给定的初始温度和含水率：
+\begin{equation}
+T(r,0)=28\,{}^\circ\mathrm{C},
+\qquad
+C(r,0)=2.55\,\mathrm{kg/kg},
+\qquad 0\le r\le R.
+\label{eq:q2-initial}
+\end{equation}
+
+\subsection{模型的求解}
+
+径向正方向由轴线指向药材表面。在 $r=0$ 处采用轴对称零通量条件：
+\begin{equation}
+\left.\frac{\partial T}{\partial r}\right|_{r=0}=0,
+\qquad
+\left.\frac{\partial C}{\partial r}\right|_{r=0}=0.
+\label{eq:q2-center-bc}
+\end{equation}
+
+在 $r=R$ 处，本文采用第三类对流边界：
+\begin{equation}
+-k(C_s)\left.\frac{\partial T}{\partial r}\right|_{r=R}
+=h\bigl(T_s-T_a(t)\bigr),
+\label{eq:q2-thermal-bc}
+\end{equation}
+\begin{equation}
+-D(C_s,T_s)\left.\frac{\partial C}{\partial r}\right|_{r=R}
+=h_m\bigl(C_s-C_a(t)\bigr),
+\label{eq:q2-moisture-bc}
+\end{equation}
+其中 $T_s=T(R,t)$、$C_s=C(R,t)$。附录3没有重新给出表面对流换热系数和传质系数，因此本文补充假设继续沿用问题一的 $h=25\,\mathrm{W/(m^2\cdot K)}$ 和 $h_m=8\times10^{-7}\,\mathrm{m/s}$。
+
+附件1共有 $0$--$14400\,\mathrm{s}$ 的241组环境记录；问题二使用其中 $0$--$10800\,\mathrm{s}$ 的181组记录。对相邻数据点之间的烘房温度 $T_a(t)$ 和水分浓度 $C_a(t)$ 采用分段线性插值，不进行平滑或外推。控制方程在整个计算时段内保持一致。
+
+\subsection{结果的得出与分析}
+
+将 $[0,R]$ 均匀划分为 $N$ 个环形控制体，在每个控制体上对式\eqref{eq:q2-temperature}和式\eqref{eq:q2-moisture}积分。中心界面通量严格置零；内部界面上的 $k$ 和 $D$ 均取相邻控制体物性的调和平均，使相邻控制体共享同一界面通量，保持离散通量的守恒性。水分方程始终保留 $\nabla\cdot(D\nabla C)$ 的变系数形式。
+
+外表面不直接把最外控制体中心值作为 $T_s$ 或 $C_s$。对温度，将最外控制体中心至真实表面的半网格导热关系与式\eqref{eq:q2-thermal-bc}联立；对水分，将半网格扩散关系与式\eqref{eq:q2-moisture-bc}联立，并在表面扩散系数中使用当前 $C_s$ 和 $T_s+273.15$。水分表面方程可能存在退化数学根，数值上沿最外控制体浓度到环境浓度的连续方向搜索首个物理解，以保持网格细化时表面状态与内部状态相容。该选根策略用于维持边界求解的连续性，不据此断言基准计算中已发生多根异常。
+
+将温度和水分控制体未知量拼接为
+\begin{equation}
+\boldsymbol y(t)=
+\bigl[T_1,\ldots,T_N,C_1,\ldots,C_N\bigr]^{\mathsf T},
+\label{eq:q2-state}
+\end{equation}
+得到维数为 $2N$ 的刚性常微分方程组。采用 BDF 方法同步积分；每次计算右端项时，根据当前状态实时更新 $\rho(C)$、$c_p(C)$、$k(C)$ 和 $D(C,T)$，不冻结旧时刻物性，也不进行温度—水分顺序分裂。计算结果再通过关于 $r^2$ 的两点线性外推得到轴线值，并用 PCHIP 重构到题目要求的径向位置。
+
+正式计算取 $N=2561$，设置 $\mathrm{rtol}=10^{-8}$、温度绝对容差 $10^{-10}$、水分绝对容差 $10^{-11}$、最大内部时间步长 $10\,\mathrm{s}$。未舍入结果保留 $t=0,1,\ldots,10800\,\mathrm{s}$ 和 $r=0,0.001,\ldots,0.020\,\mathrm{m}$；题目指定结果表从 $t=1\,\mathrm{s}$ 开始填写，并将数值保留四位小数。
+
+\subsubsection{计算结果与规律分析}
+
+取 $t=0.5,1.0,\ldots,3.0\,\mathrm{h}$ 及 $r=0,0.5,\ldots,2.0\,\mathrm{cm}$，所得温度与干基含水率分别列于表\ref{tab:q2-temperature}和表\ref{tab:q2-moisture}。
+
+\begin{table}[H]
+\centering
+\caption{不同时间与径向位置的温度}
+\label{tab:q2-temperature}
+\zihao{-5}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+\multicolumn{6}{c}{$T(r,t)/{}^\circ\mathrm{C}$}\\
+\midrule
+$t/\mathrm{h}$ & $r=0\,\mathrm{cm}$ & $r=0.5\,\mathrm{cm}$ & $r=1.0\,\mathrm{cm}$ & $r=1.5\,\mathrm{cm}$ & $r=2.0\,\mathrm{cm}$ \\
+\midrule
+0.5 & 32.1892 & 32.3821 & 32.9659 & 33.9608 & 35.4130 \\
+1.0 & 40.3816 & 40.5536 & 41.0605 & 41.8782 & 42.9976 \\
+1.5 & 45.8468 & 45.9348 & 46.1930 & 46.6051 & 47.1401 \\
+2.0 & 48.4502 & 48.4881 & 48.5984 & 48.7736 & 49.0033 \\
+2.5 & 49.4670 & 49.4792 & 49.5136 & 49.5653 & 49.6609 \\
+3.0 & 49.8495 & 49.8553 & 49.8746 & 49.9101 & 49.9664 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{不同时间与径向位置的干基含水率}
+\label{tab:q2-moisture}
+\zihao{-5}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+\multicolumn{6}{c}{$C(r,t)/(\mathrm{kg/kg})$}\\
+\midrule
+$t/\mathrm{h}$ & $r=0\,\mathrm{cm}$ & $r=0.5\,\mathrm{cm}$ & $r=1.0\,\mathrm{cm}$ & $r=1.5\,\mathrm{cm}$ & $r=2.0\,\mathrm{cm}$ \\
+\midrule
+0.5 & 2.5499 & 2.5489 & 2.5256 & 2.3257 & 1.6486 \\
+1.0 & 2.5257 & 2.4948 & 2.3578 & 2.0230 & 1.4711 \\
+1.5 & 2.3861 & 2.3256 & 2.1344 & 1.8020 & 1.3476 \\
+2.0 & 2.1709 & 2.1084 & 1.9236 & 1.6259 & 1.2311 \\
+2.5 & 1.9566 & 1.9006 & 1.7360 & 1.4720 & 1.1166 \\
+3.0 & 1.7662 & 1.7165 & 1.5702 & 1.3333 & 1.0081 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+计算结果显示，温度趋于均匀的速度明显快于含水率。$0.5\,\mathrm{h}$ 时，轴线与表面温度分别为 $32.1892\,{}^\circ\mathrm{C}$ 和 $35.4130\,{}^\circ\mathrm{C}$；至 $3\,\mathrm{h}$，两者分别为 $49.8495\,{}^\circ\mathrm{C}$ 和 $49.9664\,{}^\circ\mathrm{C}$，温差缩小至约 $0.12\,{}^\circ\mathrm{C}$。相比之下，$3\,\mathrm{h}$ 时轴线与表面含水率仍分别为 $1.7662\,\mathrm{kg/kg}$ 和 $1.0081\,\mathrm{kg/kg}$，内部尚保留明显的水分梯度。
+
+% 首次引用、图片和题注作为一个非浮动块排版，防止图文分离。
+\par\addvspace{\medskipamount}
+\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+六个时刻的径向分布如图\ref{fig:q2-radial-profiles}所示，可进一步比较温度与含水率由表及里的响应差异。
+\par\smallskip
+\centering
+\includegraphics[width=0.78\linewidth]{q2/q2_radial_profiles.pdf}
+\captionof{figure}{不同时刻的径向温度与含水率分布}
+\label{fig:q2-radial-profiles}
+\end{minipage}
+\par\addvspace{\medskipamount}
+
+温度剖面随时间逐渐变平，而含水率剖面持续表现为内部高、表面低。初期表面先失水，轴线含水率变化较小；随后内部水分向表面迁移，轴线含水率才逐步下降。以初始物性估算，热扩散率 $\alpha_0=k(C_0)/[\rho(C_0)c_p(C_0)]\approx1.4483\times10^{-7}\,\mathrm{m^2/s}$，水分扩散系数 $D_0\approx5.6417\times10^{-9}\,\mathrm{m^2/s}$，相应的径向特征时间 $R^2/\alpha_0$ 与 $R^2/D_0$ 分别约为 $2762\,\mathrm{s}$ 和 $70901\,\mathrm{s}$。两者的差异与前三小时内温度趋于均匀、含水率仍明显不均的计算结果相符。
+
+\par\addvspace{\medskipamount}
+\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+为考察温度与含水率对水分迁移速率的共同影响，图\ref{fig:q2-diffusivity}给出了轴线和表面处水分扩散系数的变化。
+\par\smallskip
+\centering
+\includegraphics[width=0.82\linewidth]{q2/q2_diffusivity_timeseries.pdf}
+\captionof{figure}{轴线与表面水分扩散系数的变化}
+\label{fig:q2-diffusivity}
+\end{minipage}
+\par\addvspace{\medskipamount}
+
+由式\eqref{eq:q2-diffusivity}可知，在另一变量不变时，升温使 $D$ 增大，含水率下降则使 $D$ 减小。计算过程中，两处的扩散系数均表现为先增大、后缓慢减小；表面回落早于轴线。这说明前期升温的促进作用占优，后期温升趋缓，失水的抑制作用逐渐显现。因而，含水率变化不仅是扩散过程的结果，也会通过物性变化反过来影响后续传热与传质。
+
+\subsubsection{数值检验与适用范围}
+
+首先进行网格加密检验。相邻网格 $N=1281$ 和 $N=2561$ 在完整输出网格上的最大温度差为 $3.55\times10^{-5}\,{}^\circ\mathrm{C}$，最大含水率差为 $5.96\times10^{-5}\,\mathrm{kg/kg}$；在表\ref{tab:q2-temperature}和表\ref{tab:q2-moisture}取值点上的最大差分别为 $4.79\times10^{-6}\,{}^\circ\mathrm{C}$ 和 $2.10\times10^{-7}\,\mathrm{kg/kg}$。温度与含水率的最大差异分别出现在 $t=9900\,\mathrm{s}$ 和 $t=1\,\mathrm{s}$ 的表面位置。表列时刻从 $1800\,\mathrm{s}$ 起，其取值对网格加密的变化较小。
+
+其次进行 BDF 容差敏感性检验。在 $N=2561$ 下将参数收紧为 $\mathrm{rtol}=10^{-10}$、温度和水分绝对容差分别为 $10^{-12}$ 和 $10^{-13}$、最大步长为 $2\,\mathrm{s}$ 后，表格点温度最大变化为 $1.30\times10^{-5}\,{}^\circ\mathrm{C}$，含水率最大变化为 $1.81\times10^{-8}\,\mathrm{kg/kg}$，说明表格结果对时间积分设置不敏感。
+
+最后对有限体积控制体进行全域积分平衡检查。在选取的10个检验时刻，方程左端项的体积分与表面边界通量之间的最大相对残差分别为 $2.55\times10^{-16}$（温度）和 $2.16\times10^{-16}$（含水率输运）。基于每 $1\,\mathrm{s}$ 未舍入状态的累计积分，在 $10800\,\mathrm{s}$ 终点的温度路径积分相对残差为 $4.12\times10^{-8}$，含水率输运积分相对残差为 $3.87\times10^{-7}$。由于 $\rho c_p$ 随含水率变化，热量平衡按 $\int_0^t\int_V \rho c_p(\partial T/\partial t)\,\mathrm dV\,\mathrm d\tau$ 计算；含水率平衡则比较 $\int_V C\,\mathrm dV$ 的变化与累计边界通量。这两项检查反映了所建方程的离散一致性。
+
+所有正式输出均为有限值，含水率保持为正，未发现明显空间锯齿或异常极值。后期约 $2.9\,\mathrm{h}$ 的近表面温度剖面出现小幅非单调响应，与附件1环境温度的波动相对应；因此，径向温度在全过程中并非严格单调。上述网格、容差和积分平衡检查用于说明数值离散稳定性与边界通量一致性，不能替代实验验证，也不能单独证明物理模型与真实药材完全一致。
+
+\subsubsection{问题二小结}
+
+本文在问题一固定几何模型的基础上引入含水率相关物性和温度相关扩散系数，建立了温度—水分双向参数耦合模型。结果表明，前三小时内药材温度迅速接近烘房环境，水分由内部向表面迁移，轴线失水响应明显滞后。网格加密、时间容差和全域积分平衡检查支持当前表格结果的数值稳定性；该模型为后续延长计算时段、确定达标时间提供了基础。

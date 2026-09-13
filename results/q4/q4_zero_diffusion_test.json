@@ -1,0 +1,20 @@
+{
+  "purpose": "材料坐标结构性极限实验，不改变正式主模型",
+  "cells": 257,
+  "time_range_s": [
+    0.0,
+    172800.0
+  ],
+  "initial_profile": "0.85+0.30*cos(pi*xi)",
+  "D_m2_s": 0.0,
+  "hm_m_s": 0.0,
+  "max_abs_C_change": 0.0,
+  "acceptance_limit": 1e-10,
+  "pass": true,
+  "wrong_extra_term_probe": {
+    "time_s": 21600.0,
+    "Rdot_m_s": -1.1219512195121945e-07,
+    "max_abs_artificial_dCdt_s_1": 4.457581599163107e-06,
+    "interpretation": "若外挂xi*Rdot/R*C_xi项，非均匀材料浓度会在D=hm=0时凭空变化。"
+  }
+}

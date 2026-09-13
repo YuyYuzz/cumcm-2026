@@ -1,0 +1,18 @@
+{
+  "formal_interpolation": "PCHIP",
+  "node_max_abs_error_m": 0.0,
+  "input_monotone_nonincreasing": true,
+  "pchip_vs_piecewise_linear": {
+    "end_time_signed_right_minus_left_s": 12.571337025379762,
+    "end_time_abs_difference_s": 12.571337025379762,
+    "max_abs_regular_table_C_difference": 0.0007987722143327769,
+    "worst_regular_table_location": {
+      "time_h": 6.0,
+      "location": "fixed_0_cm"
+    },
+    "end_surface_abs_difference": 5.331707297884236e-13,
+    "max_abs_adopted_root_difference": 0.0005674093974985528,
+    "worst_root_time_h": 1.0
+  },
+  "conclusion": "两种节点间插值的终止时间差远小于总烘干时长；正式结果采用保持形状且无过冲的PCHIP。"
+}

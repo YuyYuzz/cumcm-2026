@@ -1,0 +1,191 @@
+{
+  "model": "Q4 material-coordinate moving-radius coupled conservative radial finite volume + BDF",
+  "property_set": "appendix4",
+  "geometry": "moving",
+  "radius_interpolation": "pchip",
+  "grid_cells": 2561,
+  "method": "BDF",
+  "tolerances": {
+    "rtol": 1e-08,
+    "atol_temperature": 1e-10,
+    "atol_moisture": 1e-11,
+    "max_step_s": 60.0
+  },
+  "runtime_s": 136.79176030000235,
+  "nfev": 20772,
+  "njev": 409,
+  "nlu": 2441,
+  "input_files": {
+    "attachment1": "CUMCM2026Problems/A题/附件/附件1.xlsx",
+    "attachment2": "CUMCM2026Problems/A题/附件/附件2.xlsx",
+    "template": "CUMCM2026Problems/A题/附件/附件3/result4.xlsx"
+  },
+  "initial_properties": {
+    "rho_kg_m3": 989.5,
+    "cp_j_kg_k": 3394.366197183099,
+    "k_w_m_k": 0.26366197183098594,
+    "D_m2_s": 1.047112298949363e-09,
+    "alpha_m2_s": 7.850060489915901e-08,
+    "tau_temperature_s_at_R0": 5095.502136752137,
+    "tau_moisture_s_at_R0": 382002.96224325366
+  },
+  "initial_state": {
+    "temperature_c": 28.0,
+    "moisture": 2.55,
+    "radius_m": 0.02
+  },
+  "end_time_s": 182956.14779259945,
+  "end_time_h": 50.82115216461096,
+  "end_time_d": 2.11754800685879,
+  "end_radius_m": 0.012,
+  "end_max_moisture": 0.15,
+  "end_max_radius_m": 0.0,
+  "end_axis_moisture": 0.15,
+  "end_surface_moisture": 0.052496401177438465,
+  "table6_times_s": [
+    21600.0,
+    43200.0,
+    64800.0,
+    86400.0,
+    108000.0,
+    129600.0,
+    151200.0,
+    172800.0,
+    182956.14779259945
+  ],
+  "table6_columns": [
+    "0 cm",
+    "0.5 cm",
+    "1.0 cm",
+    "1.5 cm",
+    "surface"
+  ],
+  "table6_moisture": [
+    [
+      1.7164244107873865,
+      1.5349695654126565,
+      1.0212472350650863,
+      null,
+      0.42151946808448676
+    ],
+    [
+      0.7340340478550638,
+      0.6515591240203542,
+      0.4067803603419788,
+      null,
+      0.16659880044549488
+    ],
+    [
+      0.40653053994713123,
+      0.36674502161401085,
+      0.23873853108961152,
+      null,
+      0.08884309408704873
+    ],
+    [
+      0.28369592850733844,
+      0.2598200714697935,
+      0.17830326642210179,
+      null,
+      0.0670897831631084
+    ],
+    [
+      0.2253138203927997,
+      0.2084926548588831,
+      0.14874797258904524,
+      null,
+      0.05929212763318312
+    ],
+    [
+      0.1920385224722425,
+      0.17896222513831575,
+      0.13124216960069737,
+      null,
+      0.05578875510104519
+    ],
+    [
+      0.17060267362401849,
+      0.15980401892723384,
+      0.1196246413997105,
+      null,
+      0.05394269936991891
+    ],
+    [
+      0.15561038045147424,
+      0.14632351461656673,
+      0.11125539177374356,
+      null,
+      0.05285759728875249
+    ],
+    [
+      0.15,
+      0.1412603042888729,
+      0.10806679914443627,
+      null,
+      0.052496401177438465
+    ]
+  ],
+  "formal_output": {
+    "time_interval_s": 60,
+    "last_regular_time_s": 182940,
+    "fixed_radius_cm": [
+      0.0,
+      1.9,
+      0.1
+    ],
+    "surface_column": true,
+    "xlsx_decimals": 4
+  },
+  "surface_root_audit": {
+    "all_single_root": true,
+    "record_count": 8
+  },
+  "solution_data": "Q4/q4_solution.npz",
+  "main_checks_passed": true,
+  "result_workbook": "Q4/result4.xlsx",
+  "result_workbook_checks": {
+    "official_template": "CUMCM2026Problems/A题/附件/附件3/result4.xlsx",
+    "sheet_names": [
+      "Sheet1"
+    ],
+    "rows": 3050,
+    "columns": 22,
+    "first_time_s": 60,
+    "last_regular_time_s": 182940,
+    "headers": [
+      "时间\\到药材中心的距离",
+      0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1,
+      1.1,
+      1.2,
+      1.3,
+      1.4,
+      1.5,
+      1.6,
+      1.7,
+      1.8,
+      1.9,
+      "药材表面"
+    ],
+    "formula_count": 0,
+    "merged_ranges": [],
+    "unexpected_blank_count": 0,
+    "outside_domain_blank_count": 19982,
+    "number_format_error_count": 0,
+    "max_abs_difference_from_rounded_frozen_solution": 0.0,
+    "all_checks_passed": true
+  },
+  "validation_file": "Q4/q4_validation.json",
+  "effect_decomposition_file": "Q4/q4_effect_decomposition.json",
+  "validation_overall_pass": true,
+  "result_payload": "Q4/result4_payload.json"
+}

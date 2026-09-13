@@ -1,0 +1,22 @@
+% 使用 Sustainable-Enjoyment 模板本身的视觉样式。
+% 旧样式已归档至 archive/legacy-template-files/cumcm2026.sty，不再加载，
+% 避免覆盖上游标题、间距与图表样式。
+\usepackage[super,numbers,sort&compress]{natbib}
+% Noto Sans Mono 覆盖代码中的摄氏度等符号；中文仍由 ctex 字体回退处理。
+\newfontfamily\CumcmCodeFont{NotoSansMono-Regular.ttf}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\BeforeBeginEnvironment{tabular}{\zihao{-5}}
+% 给上游代码行号和外框留出内侧空间，防止侵入25mm页边距。
+\lstset{basicstyle=\CumcmCodeFont\small,xleftmargin=12pt,xrightmargin=4pt}
+\pagestyle{plain}
+\hypersetup{pdfauthor={},pdfsubject={CUMCM 2026}}
+\newcommand{\CumcmAIUsed}[1]{\section*{AI工具使用声明}本参赛队在竞赛过程中使用了AI工具，主要用于#1，详细使用情况见支撑材料中的《AI工具使用详情.pdf》。}
+\newcommand{\CumcmAINotUsed}{\section*{AI工具使用声明}本参赛队在竞赛过程中未使用任何AI工具。}
+
+% 正式图片优先，其次是可编辑图源和上游模板示例图片。
+\graphicspath{{figures/final/}{figures/source/}{figures/}}
+
+% 常用数学记号可在此集中定义，避免各章节重复声明。
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}

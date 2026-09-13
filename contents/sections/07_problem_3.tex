@@ -1,0 +1,164 @@
+\section{问题三：达标烘干时间与全域终止判定}
+
+问题三要求确定药材全域水分浓度降至 $0.15\,\mathrm{kg/kg}$ 所需的烘干时间，并给出题目指定时刻和径向位置的水分浓度。与问题二相比，本问的主要变化是计算时段从前三小时延长到达标时刻，且判停条件作用于整个药材区域，而不是某一个观测位置。因此，本问继承问题二的轴对称长圆柱几何、变物性温度—水分耦合方程、第三类表面边界和守恒有限体积离散，只扩展计算时域并增加全域终止事件。
+
+药材仍近似为半径 $R=0.02\,\mathrm{m}$、长度 $L=0.25\,\mathrm{m}$ 的轴对称长圆柱，仅描述 $r\in[0,R]$ 上的径向传热传质过程。问题三从题目给定的均匀初始状态重新计算，不把问题二的终态作为初值。附件1在 $0$--$14400\,\mathrm{s}$ 内的环境温度和环境水分浓度采用分段线性插值；超过该数据范围后，本文将两项环境量保持为附件末值 $T_a=50.165\,{}^\circ\mathrm{C}$ 和 $C_a=0.04986\,\mathrm{kg/kg}$。这是题目数据终止后的补充边界假设。
+
+\subsection{全域阈值事件模型的建立}
+
+问题三沿用问题二的温度—水分耦合模型。令 $T(r,t)$ 为摄氏温度，$C(r,t)$ 为干基水分浓度，则温度场和水分场分别满足
+\begin{equation}
+\rho(C)c_p(C)\frac{\partial T}{\partial t}
+=\frac{1}{r}\frac{\partial}{\partial r}
+\left[rk(C)\frac{\partial T}{\partial r}\right],
+\qquad 0<r<R,
+\label{eq:q3-temperature}
+\end{equation}
+\begin{equation}
+\frac{\partial C}{\partial t}
+=\frac{1}{r}\frac{\partial}{\partial r}
+\left[rD(C,T)\frac{\partial C}{\partial r}\right],
+\qquad 0<r<R.
+\label{eq:q3-moisture}
+\end{equation}
+
+式\eqref{eq:q3-temperature}--\eqref{eq:q3-moisture}中的物性关系与问题二相同，特别是水分扩散系数中的 Arrhenius 温度单独按
+\begin{equation}
+T_K=T+273.15
+\label{eq:q3-kelvin}
+\end{equation}
+换算为开尔文温度。正文中的 $T$、$T_a$ 和 $T_s$ 始终表示摄氏温度。该模型仍不显式加入收缩、吸附等温线和蒸发潜热；这些处理是沿用问题二的建模简化，不表示相应物理机制在实际过程中不存在。
+
+径向正方向由轴线指向表面。轴线采用零通量条件，外表面采用问题二中的第三类对流边界：
+\begin{equation}
+\left.\frac{\partial T}{\partial r}\right|_{r=0}=0,
+\qquad
+\left.\frac{\partial C}{\partial r}\right|_{r=0}=0,
+\label{eq:q3-center-bc}
+\end{equation}
+\begin{equation}
+-k(C_s)\left.\frac{\partial T}{\partial r}\right|_{r=R}
+=h(T_s-T_a),
+\qquad
+-D(C_s,T_s)\left.\frac{\partial C}{\partial r}\right|_{r=R}
+=h_m(C_s-C_a).
+\label{eq:q3-surface-bc}
+\end{equation}
+
+为避免只检查某一网格点，定义全域最大水分浓度为
+\begin{equation}
+C_{\max}(t)=\max\left\{C_{\mathrm{axis}}(t),C_1(t),\ldots,C_N(t),C_s(t)\right\},
+\label{eq:q3-cmax}
+\end{equation}
+其中 $C_i$ 为控制体中心值，$C_s$ 为真实表面值，$C_{\mathrm{axis}}$ 由中心附近关于 $r^2$ 的两点线性外推得到。烘干结束时刻取为 $C_{\max}(t)-0.15$ 第一次由正向负穿越的连续时刻，即
+\begin{equation}
+C_{\max}(t_e)=0.15\,\mathrm{kg/kg}.
+\label{eq:q3-stop}
+\end{equation}
+事件检测同时覆盖轴线、全部控制体中心和真实表面，因而不预设终点最大值一定位于轴线；事件触发后，再用高分辨率径向重构复核终点位置。
+
+\subsection{模型的求解}
+
+将 $[0,R]$ 划分为 $N$ 个环形控制体，对式\eqref{eq:q3-temperature}和式\eqref{eq:q3-moisture}作守恒积分。内部界面上的 $k$ 和 $D$ 取相邻控制体物性的调和平均，中心界面通量置零；外表面通过半网格传递关系与 Robin 条件联立重构真实表面状态。温度和水分未知量拼接为 $2N$ 维状态向量，采用 BDF 方法同步积分，并在每次计算右端项时更新变物性。空间离散和边界重构均沿用问题二，新增的数值任务是持续积分到式\eqref{eq:q3-stop}触发。
+
+正式长程计算取 $N=2561$，设置温度和水分的绝对容差分别为 $10^{-10}$ 和 $10^{-11}$，相对容差为 $10^{-8}$，BDF 内部最大步长为 $60\,\mathrm{s}$。网格加密、容差敏感性和最大步长对照均使用同一终止事件。结果表按题目要求每 $60\,\mathrm{s}$ 保存一次；\texttt{result3.xlsx} 的完整输出径向位置为 $0,0.1,\ldots,2.0\,\mathrm{cm}$，正文表\ref{tab:q3-moisture}则按题目要求每隔 $0.5\,\mathrm{cm}$ 列示典型时刻结果；水分浓度显示为四位小数。未舍入结果用于数值检验和题目要求的结果表生成。
+
+\subsection{结果的得出与分析}
+
+连续事件检测得到
+\begin{equation}
+t_e=205818.3509686\,\mathrm{s}=57.1717642\,\mathrm{h}=2.3821568\,\mathrm{d}.
+\label{eq:q3-end-time}
+\end{equation}
+正文将其表述为约 $57.17\,\mathrm{h}$（约 $2.38\,\mathrm{d}$），不把未舍入小数解释为物理精度。终点高分辨率重构的全域最大水分浓度为 $0.1500000\,\mathrm{kg/kg}$，位置在轴线 $r=0$；真实表面水分浓度为 $0.0525359\,\mathrm{kg/kg}$，轴线和表面温度均约为 $50.165\,{}^\circ\mathrm{C}$。
+
+表\ref{tab:q3-moisture}列出题目指定时刻和径向位置的水分浓度。最后一行对应连续事件时刻，用于描述终点径向分布；它不是结果工作簿中的规则采样节点。
+
+\begin{table}[H]
+\centering
+\caption{问题三典型时刻与径向位置的水分浓度}
+\label{tab:q3-moisture}
+\zihao{-5}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+\multicolumn{6}{c}{$C(r,t)/(\mathrm{kg/kg})$}\\
+\midrule
+$t/\mathrm{h}$ & $r=0\,\mathrm{cm}$ & $r=0.5\,\mathrm{cm}$ & $r=1.0\,\mathrm{cm}$ & $r=1.5\,\mathrm{cm}$ & $r=2.0\,\mathrm{cm}$ \\
+\midrule
+6 & 1.0156 & 0.9868 & 0.9006 & 0.7546 & 0.5335 \\
+12 & 0.4548 & 0.4418 & 0.4019 & 0.3289 & 0.1639 \\
+18 & 0.2979 & 0.2906 & 0.2679 & 0.2247 & 0.0842 \\
+24 & 0.2371 & 0.2321 & 0.2161 & 0.1851 & 0.0663 \\
+30 & 0.2053 & 0.2013 & 0.1887 & 0.1637 & 0.0597 \\
+36 & 0.1854 & 0.1821 & 0.1714 & 0.1501 & 0.0565 \\
+42 & 0.1717 & 0.1687 & 0.1593 & 0.1404 & 0.0547 \\
+48 & 0.1615 & 0.1588 & 0.1504 & 0.1332 & 0.0536 \\
+54 & 0.1535 & 0.1511 & 0.1433 & 0.1275 & 0.0528 \\
+57.1718 & 0.1500 & 0.1477 & 0.1402 & 0.1249 & 0.0525 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表\ref{tab:q3-moisture}显示，表面水分浓度下降最快，轴线响应最为滞后，径向梯度在后期仍然存在。随着 $C$ 降低，扩散系数中的 $\exp(-0.45/C)$ 因子减小，内部水分迁移逐渐受限，因此最后阶段的浓度下降速度低于早期。仅考察浓度因子 $\exp(-0.45/C)$，其在 $C$ 从 $2.55$ 降至 $0.15\,\mathrm{kg/kg}$ 时由约 $0.838$ 降至 $0.050$，有助于解释后期迁移减慢；这一比较不代表含温度因子的完整扩散系数变化倍数。
+
+曲线在终点附近下降趋缓，但仍在 $t_e$ 处首次穿越 $0.15\,\mathrm{kg/kg}$，说明采用全域最大值而不是表面值作为判停量确实控制了后期内部水分。
+
+\par\addvspace{\medskipamount}
+\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+为观察全域判停量并确认终止事件位置，图\ref{fig:q3-cmax-threshold}给出 $C_{\max}(t)$ 的时间历程及其与 $0.15\,\mathrm{kg/kg}$ 阈值的交点。
+\par\smallskip
+\centering
+\includegraphics[width=0.82\linewidth]{q3/q3_cmax_threshold.png}
+\captionof{figure}{问题三全域最大水分浓度及 $0.15\,\mathrm{kg/kg}$ 终止阈值}
+\label{fig:q3-cmax-threshold}
+\end{minipage}
+\par\addvspace{\medskipamount}
+
+图\ref{fig:q3-spatiotemporal-field}进一步展示水分场的时空变化。橙色等值线表示 $C=0.15\,\mathrm{kg/kg}$，它在终点附近首先接触轴线，和高分辨率终点重构的最大值位置一致。径向剖面图\ref{fig:q3-moisture-profiles}则表明，从早期到终点，表面低浓度区逐步向轴线推进，内部梯度逐渐减小但没有在判停前消失。
+
+\par\addvspace{\medskipamount}
+\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+时空场用于定位阈值等值线的空间位置，并检验径向剖面随时间的连续变化。
+\par\smallskip
+\centering
+\includegraphics[width=0.82\linewidth]{q3/q3_spatiotemporal_field.png}
+\captionof{figure}{问题三水分浓度的时间—半径分布及 $0.15\,\mathrm{kg/kg}$ 等值线}
+\label{fig:q3-spatiotemporal-field}
+\end{minipage}
+\par\addvspace{\medskipamount}
+
+\par\addvspace{\medskipamount}
+\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+典型时刻的径向剖面如图\ref{fig:q3-moisture-profiles}所示，用于比较表面脱水和内部响应的时间差。
+\par\smallskip
+\centering
+\includegraphics[width=0.82\linewidth]{q3/q3_moisture_profiles.png}
+\captionof{figure}{问题三典型时刻的径向水分浓度剖面}
+\label{fig:q3-moisture-profiles}
+\end{minipage}
+\par\addvspace{\medskipamount}
+
+按整数秒解释连续事件时刻，因为 $205818.3509686\,\mathrm{s}$ 位于 $205818\,\mathrm{s}$ 与 $205819\,\mathrm{s}$ 之间，自 $205819\,\mathrm{s}$ 起全域最大水分浓度严格低于阈值。\texttt{result3.xlsx} 按每 $60\,\mathrm{s}$ 保存，因此最后一个不超过 $t_e$ 的规则采样点是 $205800\,\mathrm{s}$；精确事件时刻在表\ref{tab:q3-moisture}中单独给出，不额外写入60 s规则采样序列。
+
+\subsubsection{数值检验与结果稳定性}
+
+首先进行网格加密检验。$N=513,1025,2561$ 时得到的终止时间约为 $57.2067\,\mathrm{h}$、$57.1809\,\mathrm{h}$ 和 $57.1718\,\mathrm{h}$；从 $N=1025$ 到 $N=2561$ 的变化为 $32.9251\,\mathrm{s}$，表\ref{tab:q3-moisture}常规时刻的最大变化降至 $1.84\times10^{-5}\,\mathrm{kg/kg}$。这项检验对应空间离散误差，支持正式网格对表格精度的稳定性。
+
+其次检查时间积分设置。将相对容差从 $10^{-8}$ 放宽至 $10^{-7}$，终止时间仅变化约 $2.8\times10^{-3}\,\mathrm{s}$。
+
+将 BDF 最大内部步长从 $60\,\mathrm{s}$ 改为 $10\,\mathrm{s}$ 后，终止时间仅变化 $0.000399\,\mathrm{s}$，表格值最大差仅为 $4.73\times10^{-9}\,\mathrm{kg/kg}$。这些比较说明结果对时间积分设置不敏感。
+
+再次进行全域积分平衡检查。瞬时有限体积共享通量的积分平衡达到机器精度；由每 $60\,\mathrm{s}$ 保存结果作梯形累计积分，终点累计相对残差为温度 $3.52\times10^{-6}$、水分 $9.34\times10^{-5}$。这里的累计残差用于检验数值离散和边界通量的一致性，不构成实验验证，也不证明物理模型与真实药材完全一致。正式结果均为有限值，水分浓度保持为正；检查未发现明显非物理振荡、负值或异常极值。
+
+问题三在前三小时还与问题二的未舍入结果进行逐点对齐。21 个输出半径上的温度、水分和真实表面状态最大绝对差均为 0，说明延长计算时域没有改变问题二的早期计算结果。该检查属于共享模型实现的一致性核验，不作为独立实验验证。
+
+\subsubsection{环境水分敏感性与模型局限}
+
+附件1数据结束后环境水分浓度的取值会影响后期脱水。将 $14400\,\mathrm{s}$ 之后的 $C_a$ 提高至 $0.07\,\mathrm{kg/kg}$，模型得到烘干时间约为 $57.81\,\mathrm{h}$，比基准情景延长约 $0.63\,\mathrm{h}$。该对照用于说明环境边界变化对后期结果的影响。
+
+\subsubsection{问题三小结}
+
+问题三在问题二耦合模型的基础上延长计算时域，并以全域最大水分浓度定义终止事件。基准环境延拓下，药材达到 $0.15\,\mathrm{kg/kg}$ 全域阈值的时间约为 $57.17\,\mathrm{h}$；终点最大值位于轴线，表面水分浓度已降至约 $0.0525\,\mathrm{kg/kg}$。网格、容差、内部步长、积分平衡和 Q2 早期对齐检查支持该数值结果的稳定性；边界延拓敏感性分析表明，附件数据结束后的环境湿度会影响后期脱水时间。

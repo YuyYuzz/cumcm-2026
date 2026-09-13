@@ -1,0 +1,62 @@
+tmp-pdfcrop-13964.tex
+*.ini
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.eoc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.tce
+.*.lb
+*.dvi
+*.xdv
+*-converted-to.*
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+Temp/*
+simkai.ttf
+build/
+.DS_Store
+output/
+CUMCM2026Problems.zip
+0155-min-stack.md
+
+# Office temporary and lock files
+~$*
+*.tmp
+
+# Python / notebook caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Local environments and generated scratch output
+.venv/
+venv/
+绘图复刻/
+tmp/
+
+# matplotlib font cache
+**/.mplconfig/
+
+# 第三方克隆（自带 .git），不入库
+codex-paper-figure-skill/
+
+# 第三方论文 PDF：本地留存，不再公开分发
+references/**/*.pdf

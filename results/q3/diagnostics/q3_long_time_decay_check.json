@@ -1,0 +1,42 @@
+{
+  "purpose": "长期衰减行为合理性检查；不改变主模型与正式结果",
+  "source": "q3_solution.npz",
+  "moisture_ratio_definition": "MR=(Cbar-Ceq)/(Cbar_at_4h-Ceq), Cbar=moisture_inventory/(pi*R^2*L)",
+  "equilibrium_reference_kg_kg": 0.04986,
+  "cylinder_first_mode_beta": 2.404825557695773,
+  "equivalent_diffusivity_relation": "D_eff=-slope*R^2/beta_1^2",
+  "middle_moisture_interval": {
+    "interval_h": [
+      12.0,
+      30.0
+    ],
+    "sample_count": 1081,
+    "slope_per_s": -1.3267982041495346e-05,
+    "intercept": -0.9085017506433827,
+    "r_squared": 0.9605675133382348,
+    "equivalent_diffusivity_m2_s": 9.176936122410099e-10,
+    "representative_average_moisture_kg_kg": 0.21579043066169606,
+    "representative_average_temperature_c": 50.16500000000001,
+    "appendix3_diffusivity_at_representative_state_m2_s": 2.009188692797682e-09,
+    "equivalent_to_local_diffusivity_ratio": 0.4567483460018747
+  },
+  "low_moisture_interval": {
+    "interval_h": [
+      36.0,
+      57.17176415794293
+    ],
+    "sample_count": 1272,
+    "slope_per_s": -3.8062078326284113e-06,
+    "intercept": -1.9092511640038998,
+    "r_squared": 0.9938005272645068,
+    "equivalent_diffusivity_m2_s": 2.6326027604956927e-10,
+    "representative_average_moisture_kg_kg": 0.13510774727899993,
+    "representative_average_temperature_c": 50.165000000000006,
+    "appendix3_diffusivity_at_representative_state_m2_s": 5.783434297614743e-10,
+    "equivalent_to_local_diffusivity_ratio": 0.45519714152911794
+  },
+  "end_average_moisture_kg_kg": 0.12431190791358451,
+  "end_appendix3_diffusivity_m2_s": 4.330772619523205e-10,
+  "supports_near_exponential_late_decay": true,
+  "interpretation": "后期 ln(MR)-t 近似线性，且低湿段斜率绝对值与等效扩散系数均降低；该结果仅作扩散控制的数量级检查，不用于反向修正附录3公式。"
+}
